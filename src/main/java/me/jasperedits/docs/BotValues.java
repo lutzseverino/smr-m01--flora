@@ -14,8 +14,7 @@ public class BotValues {
 
     @Getter
     private String token;
-    @Setter
-    @Getter
+
     private String defaultLanguage;
 
     // Database settings
