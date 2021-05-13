@@ -10,6 +10,7 @@ public class BotValues {
         this.defaultLanguage = defaultLanguage;
     }
 
+    // Jackson needs an empty constructor for it to work.
     public BotValues() {}
 
     @Getter

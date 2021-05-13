@@ -18,4 +18,11 @@ public class Guild implements Model {
      */
     private long messageCount;
 
+    private long seedCount;
+
+    // The default language is specified in BotValues.java's bot.yaml.
+    private String language;
+
+    private String prefix;
+
 }
