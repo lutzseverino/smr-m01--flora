@@ -3,6 +3,7 @@ package me.jasperedits;
 import me.jasperedits.logging.LogPriority;
 import me.jasperedits.logging.LogUtils;
 
+import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Main {
         try {
             FloraBot floraBot = new FloraBot(debug);
             floraBot.init();
-        } catch (IOException e) {
+        } catch (IOException | LoginException e) {
             LogUtils.log(LogPriority.ERROR, "Couldn't initialize Flora:");
             e.printStackTrace();
         }
