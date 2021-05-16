@@ -1,4 +1,4 @@
-package me.jasperedits.docs;
+package me.jasperedits.docs.impl;
 
 import lombok.Getter;
 

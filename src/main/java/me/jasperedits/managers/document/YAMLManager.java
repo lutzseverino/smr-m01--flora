@@ -1,4 +1,4 @@
-package me.jasperedits.managers;
+package me.jasperedits.managers.document;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
