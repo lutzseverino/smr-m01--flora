@@ -1,17 +1,14 @@
 package me.jasperedits;
 
 import lombok.Getter;
-import me.jasperedits.docs.BotValues;
+import me.jasperedits.docs.impl.BotValues;
 import me.jasperedits.listeners.Ready;
-import me.jasperedits.logging.LogPriority;
-import me.jasperedits.logging.LogUtils;
+import me.jasperedits.listeners.TestCommand;
 import me.jasperedits.managers.DatabaseManager;
 import me.jasperedits.managers.MongoDatabaseManager;
-import me.jasperedits.managers.YAMLManager;
+import me.jasperedits.managers.document.YAMLManager;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
-import net.dv8tion.jda.api.utils.Compression;
-import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
@@ -23,7 +20,7 @@ public class FloraBot {
     private final BotValues botValues;
     private DefaultShardManagerBuilder builder;
 
-    private DatabaseManager databaseManager;
+    public static DatabaseManager databaseManager;
 
     public FloraBot(boolean debug) throws IOException {
         this.debug = debug;
@@ -31,7 +28,8 @@ public class FloraBot {
     }
 
     public void init() throws LoginException {
-        this.databaseManager = new MongoDatabaseManager(
+
+        databaseManager = new MongoDatabaseManager(
                 this.botValues.getDatabaseHostname(),
                 this.botValues.getDatabasePort(),
                 this.botValues.getDatabaseUsername(),
@@ -43,12 +41,14 @@ public class FloraBot {
 
         builder.setBulkDeleteSplittingEnabled(false);
         builder.setActivity(Activity.watching("your community grow"));
-        // Registers all the listeners
-        registerListeners();
+        this.registerListeners();
         builder.build();
     }
 
+    /**
+     * Registers all Flora's listeners.
+     */
     public void registerListeners() {
-        builder.addEventListeners(new Ready());
+        builder.addEventListeners(new Ready(), new TestCommand());
     }
 }
