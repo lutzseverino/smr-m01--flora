@@ -21,17 +21,18 @@ public class GuildDAO {
                     new CacheLoader<>() {
                         @Override
                         public Guild load(@NotNull String id) {
-                            return findGuild(id).orElseGet(() -> new Guild(id, "f!"));
+                            return findGuild(id).orElseThrow();
                         }
                     });
 
     public static void updateGuild(Guild guild) {
         guildCollection.insertOne(guild);
+        cache.refresh(guild.getGuildId());
     }
 
     public static Optional<Guild> findGuild(String id) {
         return Optional.ofNullable(guildCollection.find()
-                .filter(Filters.eq("_id", id)).first());
+                .filter(Filters.eq("guildId", id)).first());
     }
 
     public static Guild getGuild(String id) throws ExecutionException {

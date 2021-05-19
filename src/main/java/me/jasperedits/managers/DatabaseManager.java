@@ -1,7 +1,7 @@
 package me.jasperedits.managers;
 
 import com.mongodb.client.MongoCollection;
-import me.jasperedits.docs.Model;
+import me.jasperedits.docs.base.Model;
 
 public interface DatabaseManager {
 

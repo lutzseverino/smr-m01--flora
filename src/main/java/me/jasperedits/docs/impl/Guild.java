@@ -19,7 +19,11 @@ public class Guild implements Model {
     public Guild() {
     }
 
-    private String id;
+    public Guild(String id) {
+        this.guildId = id;
+    }
+
+    private String guildId;
 
     /*
     If a Discord guild sent 1,000,000,000 messages per second,
@@ -32,17 +36,6 @@ public class Guild implements Model {
     // The default language is specified in BotValues.java's bot.yaml.
     private String language;
 
-    private String prefix;
+    private String prefix = "f!";
 
-    @ObjectId
-    @JsonProperty("_id")
-    public String getId() {
-        return id;
-    }
-
-    @ObjectId
-    @JsonProperty("_id")
-    public void setId(String id) {
-        this.id = id;
-    }
 }
