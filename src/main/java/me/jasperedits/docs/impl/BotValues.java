@@ -13,7 +13,6 @@ public class BotValues {
     // Jackson needs an empty constructor for it to work.
     public BotValues() {}
 
-    @Getter
     private String token;
 
     private String defaultLanguage;

@@ -14,8 +14,10 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class GuildDAO {
-    private static MongoCollection<Guild> guildCollection = FloraBot.databaseManager.getCollection("guilds", Guild.class);
-    private static LoadingCache<String, Guild> cache = CacheBuilder.newBuilder()
+
+    private static final MongoCollection<Guild> guildCollection = FloraBot.getInstance().getDatabaseManager().getCollection("guilds", Guild.class);
+
+    private static final LoadingCache<String, Guild> cache = CacheBuilder.newBuilder()
             .expireAfterAccess(10, TimeUnit.MINUTES)
             .build(
                     new CacheLoader<>() {
@@ -38,4 +40,5 @@ public class GuildDAO {
     public static Guild getGuild(String id) throws ExecutionException {
         return cache.get(id);
     }
+
 }

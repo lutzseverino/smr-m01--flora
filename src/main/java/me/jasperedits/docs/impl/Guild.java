@@ -1,20 +1,12 @@
 package me.jasperedits.docs.impl;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import me.jasperedits.docs.Model;
-import org.mongojack.ObjectId;
-
+import me.jasperedits.docs.base.SimpleDocument;
 
 @Getter
 @Setter
-public class Guild implements Model {
-
-    public Guild(String id, String prefix) {
-        this.id = id;
-        this.prefix = prefix;
-    }
+public class Guild extends SimpleDocument {
 
     public Guild() {
     }
@@ -26,15 +18,15 @@ public class Guild implements Model {
     private String guildId;
 
     /*
-    If a Discord guild sent 1,000,000,000 messages per second,
-    it would take roughly 292471 years to reach the long primitive limit.
+     *  If a Discord guild sent 1,000,000,000 messages per second,
+     *  it would take roughly 292471 years to reach the long primitive limit.
      */
     private long messageCount;
 
     private long seedCount;
 
     // The default language is specified in BotValues.java's bot.yaml.
-    private String language;
+    private String language = "es";
 
     private String prefix = "f!";
 
