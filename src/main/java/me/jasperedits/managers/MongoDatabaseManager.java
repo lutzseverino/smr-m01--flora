@@ -20,8 +20,7 @@ public class MongoDatabaseManager implements DatabaseManager {
     }
 
     @Override
-    public <T extends Model> MongoCollection<T> getCollection(String name, Class<T> type) {
+    public <T extends Model> JacksonMongoCollection<T> getCollection(String name, Class<T> type) {
         return JacksonMongoCollection.builder().build(this.mongoDatabase, name, type, UuidRepresentation.STANDARD);
     }
-
 }
