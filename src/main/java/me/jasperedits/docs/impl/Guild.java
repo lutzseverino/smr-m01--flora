@@ -25,6 +25,8 @@ public class Guild extends SimpleDocument {
 
     private long seedCount;
 
+    private String seedChannel;
+
     // The default language is specified in BotValues.java's bot.yaml.
     private String language = "es";
 

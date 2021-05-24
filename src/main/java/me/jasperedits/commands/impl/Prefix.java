@@ -35,9 +35,9 @@ public class Prefix extends ListenerAdapter implements ICommand {
         if (args.size() > 0) {
             guild.setPrefix(args.get(0));
             GuildDAO.updateGuild(guild);
-            event.getChannel().sendMessage("Prefix changed to `" + args.get(0)  + "`").queue();
+            event.getChannel().sendMessage("Prefix changed to `" + args.get(0)  + "`.").queue();
         } else {
-            event.getChannel().sendMessage("Current prefix is `"+ guild.getPrefix() + "`").queue();
+            event.getChannel().sendMessage("Current prefix is `"+ guild.getPrefix() + "`. (But you probably already know that)").queue();
         }
     }
 }
