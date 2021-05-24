@@ -1,6 +1,7 @@
 package me.jasperedits;
 
 import lombok.Getter;
+import me.jasperedits.commands.CommandService;
 import me.jasperedits.commands.impl.Prefix;
 import me.jasperedits.docs.impl.BotValues;
 import me.jasperedits.listeners.Ready;
@@ -52,7 +53,7 @@ public class FloraBot {
      * Registers all Flora's listeners.
      */
     public void registerListeners(DefaultShardManagerBuilder builder) {
-        builder.addEventListeners(new Ready(), new TestCommand(), new Prefix());
+        builder.addEventListeners(new CommandService(), new Ready());
     }
 
     public static FloraBot getInstance() {
