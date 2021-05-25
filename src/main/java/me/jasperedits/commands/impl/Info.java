@@ -5,7 +5,7 @@ import me.jasperedits.commands.CommandInformation;
 import me.jasperedits.commands.CommandType;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-@CommandType(names = "prefix")
+@CommandType(names = {"info", "information", "información"})
 public class Info implements Command {
     GuildMessageReceivedEvent event;
     Command command;
@@ -15,6 +15,6 @@ public class Info implements Command {
 
     @Override
     public void execute(CommandInformation command) {
-        command.getEvent().getChannel().sendMessage("test").queue();
+        command.getEvent().getChannel().sendMessage("To-do").queue();
     }
 }

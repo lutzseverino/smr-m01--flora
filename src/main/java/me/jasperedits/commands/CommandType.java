@@ -13,5 +13,7 @@ public @interface CommandType {
 
     String[] names();
 
+    String usage() default "";
+
     Permission permission() default Permission.VIEW_CHANNEL;
 }
