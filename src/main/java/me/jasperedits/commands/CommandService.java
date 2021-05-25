@@ -26,8 +26,8 @@ public class CommandService extends ListenerAdapter {
             return;
         }
 
-        for (Class<? extends Command> command : CommandRegistry.getAllCommands()) {
-            for (String alias : command.getAnnotation(CommandType.class).names()) {
+        for (Command command : CommandRegistry.getAllCommands()) {
+            for (String alias : command.getClass().getAnnotation(CommandType.class).names()) {
                 if (message.equals(prefix + alias)) {
                     List<String> args = new ArrayList<>(Arrays.asList(message.split(" ")));
                     args.remove(0);
