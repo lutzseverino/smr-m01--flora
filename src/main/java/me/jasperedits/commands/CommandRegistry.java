@@ -5,6 +5,7 @@ import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
 import me.jasperedits.commands.impl.Info;
 import me.jasperedits.commands.impl.Prefix;
+import me.jasperedits.commands.impl.SeedChannel;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +20,7 @@ public class CommandRegistry {
         commands = Maps.newHashMap();
         List<Command> commandList = Arrays.asList(
                 new Prefix(),
+                new SeedChannel(),
                 new Info()
         );
 

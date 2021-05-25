@@ -10,6 +10,6 @@ public class EmbedTemplate {
 
     public EmbedTemplate(EmbedType embedType, User user) {
         this.embedBuilder = new EmbedBuilder().setColor(embedType.hexColor);
-        this.embedBuilder.setAuthor(user.getName(), user.getAvatarUrl());
+        this.embedBuilder.setAuthor(user.getName(), null,  user.getEffectiveAvatarUrl());
     }
 }

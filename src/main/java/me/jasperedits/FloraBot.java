@@ -2,10 +2,8 @@ package me.jasperedits;
 
 import lombok.Getter;
 import me.jasperedits.commands.CommandService;
-import me.jasperedits.commands.impl.Prefix;
 import me.jasperedits.docs.impl.BotValues;
 import me.jasperedits.listeners.Ready;
-import me.jasperedits.listeners.TestCommand;
 import me.jasperedits.managers.DatabaseManager;
 import me.jasperedits.managers.MongoDatabaseManager;
 import me.jasperedits.managers.document.YAMLManager;

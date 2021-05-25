@@ -7,6 +7,7 @@ import me.jasperedits.commands.CommandType;
 import me.jasperedits.docs.GuildDAO;
 import me.jasperedits.embeds.EmbedTemplate;
 import me.jasperedits.embeds.EmbedType;
+import me.jasperedits.utils.MathUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
@@ -32,11 +33,11 @@ public class SeedChannel implements Command {
         Member member = command.getEvent().getMember();
 
         // To-do: This won't work with a channel mention.
-        if (command.getArgs().size() != 1 || command.getEvent().getGuild().getTextChannelById(command.getArgs().get(0)) != null) {
+        if (command.getArgs().size() != 1 || command.getEvent().getGuild().getTextChannelById(command.getArgs().get(0).replaceAll("\\D+","")) == null) {
             EmbedBuilder errorEmbed = new EmbedTemplate(EmbedType.ERROR, member.getUser()).getEmbedBuilder();
             errorEmbed.setTitle("**__" + ARGUMENTS + "__**");
             errorEmbed.setDescription("`<optional>, [mandatory], {rules}`\n\n" +
-                    "Correct usage is: " + this.getClass().getAnnotation(CommandType.class).usage());
+                    "Correct usage is: `" + this.getClass().getAnnotation(CommandType.class).usage() + "`");
             message.reply(errorEmbed.build()).queue();
             return;
         }
@@ -45,14 +46,18 @@ public class SeedChannel implements Command {
 
         EmbedBuilder loadingEmbed = new EmbedTemplate(EmbedType.PROCESS, member.getUser()).getEmbedBuilder();
         loadingEmbed.setDescription("Uploading new data to database...");
-        message.reply(loadingEmbed.build()).queue();
+        Message embedToUpdate = message.reply(loadingEmbed.build()).complete();
 
-        command.getGuild().setSeedChannel(seed);
+        command.getGuild().setSeedChannel(seed.replaceAll("\\D+",""));
         GuildDAO.updateGuild(command.getGuild());
 
         EmbedBuilder successEmbed = new EmbedTemplate(EmbedType.SUCCESS, member.getUser()).getEmbedBuilder();
         successEmbed.setTitle("**__" + UPLOADED + "__**");
-        successEmbed.setDescription("Seed channel has been updated to `" + seed + "`.");
-        message.reply(successEmbed.build()).queue();
+        successEmbed.setDescription("Seed channel has been updated to " + seed + ".");
+        embedToUpdate.editMessage(successEmbed.build()).queue();
+
+        EmbedBuilder embedBuilder = new EmbedBuilder().setColor(EmbedType.SUCCESS.hexColor);
+        embedBuilder.setDescription("**Next objective**: " + MathUtils.getGuildObjective(command.getEvent().getGuild()) + " messages");
+        command.getEvent().getGuild().getTextChannelById(seed.replaceAll("\\D+","")).sendMessage(embedBuilder.build()).queue();
     }
 }

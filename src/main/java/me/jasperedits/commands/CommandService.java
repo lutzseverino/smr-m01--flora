@@ -32,7 +32,7 @@ public class CommandService extends ListenerAdapter {
         for (Command command : CommandRegistry.getAllCommands()) {
             if (member.hasPermission(command.getClass().getAnnotation(CommandType.class).permission())) {
                 for (String alias : command.getClass().getAnnotation(CommandType.class).names()) {
-                    if (message.getContentRaw().equals(prefix + alias)) {
+                    if (message.getContentRaw().startsWith(prefix + alias)) {
                         List<String> args = new ArrayList<>(Arrays.asList(message.getContentRaw().split(" ")));
                         args.remove(0);
 
