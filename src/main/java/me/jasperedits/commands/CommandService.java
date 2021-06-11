@@ -1,13 +1,11 @@
 package me.jasperedits.commands;
 
 import lombok.SneakyThrows;
-import me.jasperedits.docs.GuildDAO;
-import me.jasperedits.docs.impl.Guild;
-import me.jasperedits.embeds.EmbedType;
-import me.jasperedits.embeds.EmbedTemplate;
-import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Member;
+import me.jasperedits.commands.rules.RuleRegistry;
+import me.jasperedits.daos.GuildDAO;
+import me.jasperedits.docs.db.impl.Guild;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -21,33 +19,53 @@ public class CommandService extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         Message message = event.getMessage();
-        Member member = event.getMember();
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
-        String prefix = guild.getPrefix();
-
-        if (event.isWebhookMessage() || member.getUser().isBot()) {
-            return;
-        }
 
         for (Command command : CommandRegistry.getAllCommands()) {
-            if (member.hasPermission(command.getClass().getAnnotation(CommandType.class).permission())) {
-                for (String alias : command.getClass().getAnnotation(CommandType.class).names()) {
-                    if (message.getContentRaw().startsWith(prefix + alias)) {
-                        List<String> args = new ArrayList<>(Arrays.asList(message.getContentRaw().split(" ")));
-                        args.remove(0);
+            CommandType type = command.getClass().getAnnotation(CommandType.class);
 
+            if (type.format() == CommandFormat.INTERACTION)
+                continue;
+
+            for (String alias : type.names()) {
+                if (event.getMessage().getContentRaw().startsWith(alias.replace("%l", ""), guild.getPrefix().length())) {
+                    // Remove first argument because that would be the command itself.
+                    List<String> args = new ArrayList<>(Arrays.asList(message.getContentRaw().split(" ")));
+                    args.remove(0);
+
+                    // Create a CommandInformation to pass to the rule checker.
+                    CommandInformation information = new CommandInformation(args, event, guild);
+
+                    // Run all rule checkers, if one of them is false, the command will not be fired.
+                    if (RuleRegistry.runAllRules(CommandFormat.LEGACY, type, information))
                         CommandRegistry.byName(alias).execute(new CommandInformation(args, event, guild));
+                }
+            }
+        }
+    }
+
+    @SneakyThrows
+    public void onSlashCommand(SlashCommandEvent event) {
+        String commandName = event.getName();
+        Guild guild = GuildDAO.getGuild(event.getGuild().getId());
+
+        for (Command command : CommandRegistry.getAllCommands()) {
+            CommandType type = command.getClass().getAnnotation(CommandType.class);
+
+            if (type.format() == CommandFormat.LEGACY)
+                continue;
+
+            for (String alias : type.names()) {
+                if (commandName.startsWith(alias.replace("%i", ""))) {
+
+                    // Create a CommandInformation to pass to the rule checker.
+                    CommandInformation information = new CommandInformation(event, guild);
+
+                    // Run all rule checkers, if one of them is false, the command will not be fired.
+                    if (RuleRegistry.runAllRules(CommandFormat.INTERACTION, type, information)) {
+                        CommandRegistry.byName(alias).execute(new CommandInformation(event, guild));
                     }
                 }
-
-            } else {
-                String PERMISSIONS_TITLE = "Unauthorized action";
-                String PERMISSIONS_DESC = "You don't have enough permissions to call that command.";
-
-                EmbedBuilder embedBuilder = new EmbedTemplate(EmbedType.ERROR, member.getUser()).getEmbedBuilder();
-                embedBuilder.setTitle("**__" + PERMISSIONS_TITLE + "__**");
-                embedBuilder.setDescription(PERMISSIONS_DESC);
-                message.reply(embedBuilder.build()).queue();
             }
         }
     }

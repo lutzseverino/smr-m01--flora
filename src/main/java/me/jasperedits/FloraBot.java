@@ -2,16 +2,22 @@ package me.jasperedits;
 
 import lombok.Getter;
 import me.jasperedits.commands.CommandService;
-import me.jasperedits.docs.impl.BotValues;
+import me.jasperedits.docs.BotValues;
 import me.jasperedits.listeners.Ready;
 import me.jasperedits.managers.DatabaseManager;
 import me.jasperedits.managers.MongoDatabaseManager;
 import me.jasperedits.managers.document.YAMLManager;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 @Getter
 public class FloraBot {
@@ -25,7 +31,7 @@ public class FloraBot {
 
     public FloraBot(boolean debug) throws IOException {
         this.debug = debug;
-        this.botValues = new YAMLManager("botValues.yaml").buildObject(BotValues.class);
+        this.botValues = new YAMLManager("botValues.yaml").reader(BotValues.class);
         instance = this;
     }
 
@@ -39,19 +45,27 @@ public class FloraBot {
                 this.botValues.getDatabaseName()
         );
 
+
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(this.botValues.getToken());
 
         builder.setBulkDeleteSplittingEnabled(false);
         builder.setActivity(Activity.watching("your community grow"));
-        this.registerListeners(builder);
-        builder.build();
+        builder.addEventListeners(new CommandService(), new Ready());
+
+        JDA jda = builder.build().getShards().stream().findFirst().get();
     }
 
-    /**
-     * Registers all Flora's listeners.
-     */
-    public void registerListeners(DefaultShardManagerBuilder builder) {
-        builder.addEventListeners(new CommandService(), new Ready());
+    public File getResourceFolder(String path) {
+        URL url = this.getClass().getClassLoader().getResource(path);
+        File file = null;
+        try {
+            assert url != null;
+            file = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            file = new File(url.getPath());
+        } finally {
+            return file;
+        }
     }
 
     public static FloraBot getInstance() {

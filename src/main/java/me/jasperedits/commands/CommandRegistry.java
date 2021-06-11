@@ -3,9 +3,9 @@ package me.jasperedits.commands;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
-import me.jasperedits.commands.impl.Info;
 import me.jasperedits.commands.impl.Prefix;
-import me.jasperedits.commands.impl.SeedChannel;
+import me.jasperedits.commands.impl.interactions.InteractiveLang;
+import me.jasperedits.commands.impl.interactions.InteractivePrefix;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,9 +19,9 @@ public class CommandRegistry {
     static {
         commands = Maps.newHashMap();
         List<Command> commandList = Arrays.asList(
-                new Prefix(),
-                new SeedChannel(),
-                new Info()
+                new InteractivePrefix(),
+                new InteractiveLang(),
+                new Prefix()
         );
 
         for (Command commandClass : commandList) {

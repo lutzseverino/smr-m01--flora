@@ -1,4 +1,4 @@
-package me.jasperedits.docs.base;
+package me.jasperedits.docs.db;
 
 public interface Model {
 

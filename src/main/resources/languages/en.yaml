@@ -1,0 +1,17 @@
+values:
+  # Errors
+  error.permission.title: "**__Unauthorized action__**"
+  error.permission.message: "You are not allowed to execute that action."
+  error.arguments.title: "**__Wrong arguments__**"
+  error.arguments.message: "The inputted arguments are either incorrect or invalid, check our wiki."
+  # Settings
+  settings.uploaded.title: "**__Setting updated__**"
+  settings.uploaded.message: "An updated setting has been uploaded: %s"
+  settings.uploading.message: "Contacting database..."
+  # Command: Global
+  error.title: "**__The command notified an error__**"
+  # Command: Prefix
+  prefix.error.long.message: "A prefix can't be longer than 3 characters."
+  prefix.warning.message: "\n\nPlease note this setting **only** affects legacy commands (those executed using the prefix, not Discord built in feature)."
+  # Command: Lang
+  lang.error.exists.message: "That language doesn't exist, pick one from the list: `%s`"

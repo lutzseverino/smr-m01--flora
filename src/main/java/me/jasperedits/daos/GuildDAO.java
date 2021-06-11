@@ -1,11 +1,11 @@
-package me.jasperedits.docs;
+package me.jasperedits.daos;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.mongodb.client.model.Filters;
 import me.jasperedits.FloraBot;
-import me.jasperedits.docs.impl.Guild;
+import me.jasperedits.docs.db.impl.Guild;
 import org.jetbrains.annotations.NotNull;
 import org.mongojack.JacksonMongoCollection;
 
