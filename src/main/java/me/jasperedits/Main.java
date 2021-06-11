@@ -13,14 +13,8 @@ public class Main {
     public static void main(String[] args) {
         List<String> list = Arrays.asList(args);
 
-        boolean debug = list.contains("--debug") || list.contains("-d");
-
-        if (debug) {
-            LogUtils.log(LogPriority.INFO, "Debug mode is enabled, extra information will be sent to the console.");
-        }
-
         try {
-            FloraBot floraBot = new FloraBot(debug);
+            FloraBot floraBot = new FloraBot();
             floraBot.init();
         } catch (IOException | LoginException e) {
             LogUtils.log(LogPriority.ERROR, "Couldn't initialize Flora:");

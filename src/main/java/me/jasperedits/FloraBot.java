@@ -21,16 +21,12 @@ import java.net.URL;
 
 @Getter
 public class FloraBot {
-
     public static FloraBot instance;
-
-    private final boolean debug;
 
     private final BotValues botValues;
     private DatabaseManager databaseManager;
 
-    public FloraBot(boolean debug) throws IOException {
-        this.debug = debug;
+    public FloraBot() throws IOException {
         this.botValues = new YAMLManager("botValues.yaml").reader(BotValues.class);
         instance = this;
     }
