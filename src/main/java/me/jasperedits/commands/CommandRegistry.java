@@ -5,14 +5,13 @@ import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
 import me.jasperedits.commands.impl.interactions.Lang;
 import me.jasperedits.commands.impl.interactions.Prefix;
-import me.jasperedits.logging.LogPriority;
-import me.jasperedits.logging.LogUtils;
+import me.jasperedits.commands.impl.interactions.Privacy;
+import me.jasperedits.commands.impl.legacy.UpdateGuildCommands;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @UtilityClass
 public class CommandRegistry {
@@ -24,9 +23,11 @@ public class CommandRegistry {
         interactiveCommands = Maps.newHashMap();
 
         List<Command> commandList = Arrays.asList(
-                new Prefix(),
                 new Lang(),
-                new me.jasperedits.commands.impl.legacy.Prefix()
+                new me.jasperedits.commands.impl.interactions.Prefix(),
+                new me.jasperedits.commands.impl.legacy.Prefix(),
+                new Privacy(),
+                new UpdateGuildCommands()
         );
 
         for (Command commandClass : commandList) {
@@ -39,6 +40,11 @@ public class CommandRegistry {
         }
     }
 
+    /**
+     * @param format the command format to fetch.
+     * @param name   a name of the command.
+     * @return a Command that matches said name and format.
+     */
     public Command byName(CommandFormat format, String name) {
         Map<String, Command> commandMap;
 
@@ -54,6 +60,10 @@ public class CommandRegistry {
         return commandMap.get(name);
     }
 
+    /**
+     * @param format the command format to fetch.
+     * @return a Collection of Command of said format.
+     */
     public Collection<Command> getAllCommands(CommandFormat format) {
         Collection<Command> classes = Sets.newHashSet();
         Map<String, Command> commandMap;

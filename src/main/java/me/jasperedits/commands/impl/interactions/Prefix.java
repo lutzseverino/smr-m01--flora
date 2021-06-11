@@ -27,11 +27,9 @@ public class Prefix implements Command {
     @SneakyThrows
     @Override
     public void execute(CommandInformation command) {
-
         Language language = command.getGuild().getLanguage();
         Member member = command.getInteractionEvent().getMember();
         String prefix = command.getInteractionEvent().getOption("prefix").getAsString();
-
 
         EmbedBuilder output = new EmbedTemplate(EmbedType.DEFAULT, member.getUser()).getEmbedBuilder();
 
@@ -52,11 +50,11 @@ public class Prefix implements Command {
         GuildDAO.updateGuild(command.getGuild());
 
         String UPLOADED_TITLE = language.getMessage("settings.uploaded.title");
-        String UPLOADED_MESSAGE = language.getMessage("settings.uploaded.message");
+        String UPLOADED_MESSAGE = language.getMessage("prefix.uploaded.message");
         String LEGACY_WARNING = language.getMessage("prefix.warning.message");
 
         output.setTitle(UPLOADED_TITLE);
-        output.setDescription(UPLOADED_MESSAGE.replace("%s", "`" + prefix + "`" +  LEGACY_WARNING));
+        output.setDescription(UPLOADED_MESSAGE.replace("%s", prefix) + LEGACY_WARNING);
         command.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 }

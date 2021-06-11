@@ -11,7 +11,14 @@ values:
   # Command: Global
   error.title: "**__El comando notificó un error__**"
   # Command: Prefix
+  prefix.uploaded.message: "El prefijo de este servidor fue cambiado a `%s`."
   prefix.error.long.message: "Un prefijo no puede ser más largo de 3 carácteres."
   prefix.warning.message: "\n\nTen en cuenta que este ajuste **solo** funciona con comandos heredados (los que se ejecutan con el prefijo, no la función agregada de Discord)."
   # Command: Lang
+  lang.uploaded.message: "El idioma de este servidor fue cambiado a `%s`."
   lang.error.exists.message: "Ese idioma no existe, escoge uno de la lista: `%s`"
+  # Command: Privacy
+  privacy.notice.title: "**__Mantenemos tus datos seguros__**"
+  privacy.notice.message: "No guardamos mensajes de miembros, solo lo esencial para que el bot funcione. Nuestro también código es libre, puedes comprobarlo en el enlace de abajo."
+  privacy.github.button: "Repositorio de GitHub"
+  privacy.privacy.button: "Aviso de privacidad"

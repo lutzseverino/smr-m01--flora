@@ -33,14 +33,13 @@ public class Lang implements Command {
         Member member = command.getInteractionEvent().getMember();
         String newLanguage = command.getInteractionEvent().getOption("language").getAsString().toLowerCase();
 
+        // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedType.DEFAULT, member.getUser()).getEmbedBuilder();
 
+        // Check if the language is available.
         if (!language.checkAvailability(newLanguage)) {
-            String COMMAND_ERROR_TITLE = language.getMessage("error.title");
-            String EXISTS_MESSAGE = language.getMessage("lang.error.exists.message");
-
-            output.setTitle(COMMAND_ERROR_TITLE);
-            output.setDescription(EXISTS_MESSAGE
+            output.setTitle(language.getMessage("error.title"));
+            output.setDescription(language.getMessage("lang.error.exists.message")
                     .replace("%s", language.listLanguages().stream().collect(Collectors.joining(", "))
                     .replaceAll(".yaml", "").toUpperCase()));
             command.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
@@ -56,11 +55,9 @@ public class Lang implements Command {
         // Re-get the language to output correctly.
         language = command.getGuild().getLanguage();
 
-        String UPLOADED_TITLE = language.getMessage("settings.uploaded.title");
-        String UPLOADED_MESSAGE = language.getMessage("settings.uploaded.message");
-
-        output.setTitle(UPLOADED_TITLE);
-        output.setDescription(UPLOADED_MESSAGE.replace("%s", "`" + newLanguage.toUpperCase() + "`"));
+        output.setTitle(language.getMessage("settings.uploaded.title"));
+        output.setDescription(language.getMessage("lang.uploaded.message")
+                .replace("%s", "`" + newLanguage.toUpperCase() + "`"));
         command.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 }
