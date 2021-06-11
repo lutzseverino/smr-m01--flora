@@ -21,14 +21,11 @@ public class CommandService extends ListenerAdapter {
         Message message = event.getMessage();
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
 
-        for (Command command : CommandRegistry.getAllCommands()) {
+        for (Command command : CommandRegistry.getAllCommands(CommandFormat.LEGACY)) {
             CommandType type = command.getClass().getAnnotation(CommandType.class);
 
-            if (type.format() == CommandFormat.INTERACTION)
-                continue;
-
             for (String alias : type.names()) {
-                if (event.getMessage().getContentRaw().startsWith(alias.replace("%l", ""), guild.getPrefix().length())) {
+                if (event.getMessage().getContentRaw().startsWith(alias, guild.getPrefix().length())) {
                     // Remove first argument because that would be the command itself.
                     List<String> args = new ArrayList<>(Arrays.asList(message.getContentRaw().split(" ")));
                     args.remove(0);
@@ -38,7 +35,7 @@ public class CommandService extends ListenerAdapter {
 
                     // Run all rule checkers, if one of them is false, the command will not be fired.
                     if (RuleRegistry.runAllRules(CommandFormat.LEGACY, type, information))
-                        CommandRegistry.byName(alias).execute(new CommandInformation(args, event, guild));
+                        CommandRegistry.byName(CommandFormat.LEGACY, alias).execute(new CommandInformation(args, event, guild));
                 }
             }
         }
@@ -49,21 +46,18 @@ public class CommandService extends ListenerAdapter {
         String commandName = event.getName();
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
 
-        for (Command command : CommandRegistry.getAllCommands()) {
+        for (Command command : CommandRegistry.getAllCommands(CommandFormat.INTERACTION)) {
             CommandType type = command.getClass().getAnnotation(CommandType.class);
 
-            if (type.format() == CommandFormat.LEGACY)
-                continue;
-
             for (String alias : type.names()) {
-                if (commandName.startsWith(alias.replace("%i", ""))) {
+                if (commandName.startsWith(alias)) {
 
                     // Create a CommandInformation to pass to the rule checker.
                     CommandInformation information = new CommandInformation(event, guild);
 
                     // Run all rule checkers, if one of them is false, the command will not be fired.
                     if (RuleRegistry.runAllRules(CommandFormat.INTERACTION, type, information)) {
-                        CommandRegistry.byName(alias).execute(new CommandInformation(event, guild));
+                        CommandRegistry.byName(CommandFormat.INTERACTION, alias).execute(new CommandInformation(event, guild));
                     }
                 }
             }

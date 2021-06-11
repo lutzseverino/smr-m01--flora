@@ -17,12 +17,13 @@ import java.util.stream.Collectors;
 
 @CommandType(
         format = CommandFormat.INTERACTION,
-        names = {"%ilanguage"},
-        permission = Permission.ADMINISTRATOR
+        names = {"language"},
+        permission = Permission.ADMINISTRATOR,
+        minArguments = 1, maxArguments = 1
 )
-public class InteractiveLang implements Command {
+public class Lang implements Command {
 
-    public InteractiveLang() {
+    public Lang() {
     }
 
     @SneakyThrows

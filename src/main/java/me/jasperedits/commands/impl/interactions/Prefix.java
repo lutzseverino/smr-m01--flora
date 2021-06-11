@@ -15,12 +15,13 @@ import net.dv8tion.jda.api.entities.Member;
 
 @CommandType(
         format = CommandFormat.INTERACTION,
-        names = {"%iprefix"},
-        permission = Permission.ADMINISTRATOR
+        names = {"prefix"},
+        permission = Permission.ADMINISTRATOR,
+        minArguments = 1, maxArguments = 1
 )
-public class InteractivePrefix implements Command {
+public class Prefix implements Command {
 
-    public InteractivePrefix() {
+    public Prefix() {
     }
 
     @SneakyThrows

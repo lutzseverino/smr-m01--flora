@@ -1,4 +1,4 @@
-package me.jasperedits.commands.impl;
+package me.jasperedits.commands.impl.legacy;
 
 import lombok.SneakyThrows;
 import me.jasperedits.commands.Command;
@@ -19,7 +19,7 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 
 @CommandType(
         format = CommandFormat.LEGACY,
-        names = {"%lprefix", "%lsetPrefix"},
+        names = {"prefix", "setPrefix"},
         permission = Permission.ADMINISTRATOR,
         minArguments = 1, maxArguments = 1
 )
@@ -34,9 +34,9 @@ public class Prefix implements Command {
 
         command.getLegacyEvent().getGuild().updateCommands().addCommands(
                 new CommandData("prefix", "Changes the legacy prefix on this guild.")
-                .addOption(OptionType.STRING, "prefix", "your new prefix... (max. of 3 characters long)", true),
+                        .addOption(OptionType.STRING, "prefix", "your new prefix... (max. of 3 characters long)", true),
                 new CommandData("language", "Changes the language on this guild.")
-                .addOption(OptionType.STRING, "language", "the new language..."))
+                        .addOption(OptionType.STRING, "language", "the new language...", true))
                 .queue();
 
         Language language = command.getGuild().getLanguage();
@@ -70,7 +70,7 @@ public class Prefix implements Command {
         String LEGACY_WARNING = language.getMessage("prefix.warning.message");
 
         output.setTitle(UPLOADED_TITLE);
-        output.setDescription(UPLOADED_MESSAGE.replace("%s", "`" + prefix + "`" +  LEGACY_WARNING));
+        output.setDescription(UPLOADED_MESSAGE.replace("%s", "`" + prefix + "`" + LEGACY_WARNING));
         embedToUpdate.editMessage(output.build()).queue();
     }
 }
