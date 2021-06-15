@@ -1,17 +1,19 @@
 package me.jasperedits.commands.rules;
 
-import me.jasperedits.commands.Command;
 import me.jasperedits.commands.CommandFormat;
 import me.jasperedits.commands.CommandInformation;
 import me.jasperedits.commands.CommandType;
-import me.jasperedits.managers.Language;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 public interface Rule {
-    // If these return true, the rule is passed.
+    /**
+     * @param format the command format to answer properly to the user.
+     * @param type the annotated command information.
+     * @param information the command information to get general information to answer properly and display more data.
+     * @return whether the Rule was successful or not.
+     */
     boolean check(CommandFormat format, CommandType type, CommandInformation information);
 
-    void legacyOutput(CommandInformation commandInformation);
+    void legacyOutput(CommandInformation information);
 
-    void interactionOutput(CommandInformation commandInformation);
+    void interactionOutput(CommandInformation information);
 }

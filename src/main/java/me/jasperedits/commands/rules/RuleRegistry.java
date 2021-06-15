@@ -38,10 +38,8 @@ public class RuleRegistry {
         for (Rule rule : rules) {
             if (Arrays.asList(rule.getClass().getAnnotation(RuleType.class).applyFor()).contains(format) && !rule.check(format, type, information)) {
                 switch (type.format()) {
-                    case LEGACY:
-                        rule.legacyOutput(information);
-                    case INTERACTION:
-                        rule.interactionOutput(information);
+                    case LEGACY -> rule.legacyOutput(information);
+                    case INTERACTIVE -> rule.interactionOutput(information);
                 }
                 return false;
             }

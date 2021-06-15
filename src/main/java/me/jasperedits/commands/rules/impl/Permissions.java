@@ -6,11 +6,11 @@ import me.jasperedits.commands.CommandType;
 import me.jasperedits.commands.rules.Rule;
 import me.jasperedits.commands.rules.RuleType;
 import me.jasperedits.embeds.EmbedTemplate;
-import me.jasperedits.embeds.EmbedType;
+import me.jasperedits.embeds.EmbedFormat;
 import me.jasperedits.managers.Language;
 import net.dv8tion.jda.api.EmbedBuilder;
 
-@RuleType(applyFor = {CommandFormat.LEGACY, CommandFormat.INTERACTION})
+@RuleType(applyFor = {CommandFormat.LEGACY, CommandFormat.INTERACTIVE})
 public class Permissions implements Rule {
 
     public Permissions() {
@@ -21,7 +21,7 @@ public class Permissions implements Rule {
         switch (format) {
             case LEGACY:
                 return information.getLegacyEvent().getMember().hasPermission(type.permission());
-            case INTERACTION:
+            case INTERACTIVE:
                 return information.getInteractionEvent().getMember().hasPermission(type.permission());
         }
         return false;
@@ -32,9 +32,9 @@ public class Permissions implements Rule {
         Language language = information.getGuild().getLanguage();
 
         // Build the output embed.
-        EmbedBuilder output = new EmbedTemplate(EmbedType.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
-        output.setTitle(language.getMessage("error.permission.title"));
-        output.setDescription(language.getMessage("error.permission.message"));
+        EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
+        output.setTitle(language.getValue("error.permission.title"));
+        output.setDescription(language.getValue("error.permission.message"));
 
         // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
@@ -46,9 +46,9 @@ public class Permissions implements Rule {
         Language language = information.getGuild().getLanguage();
 
         // Build the output embed.
-        EmbedBuilder output = new EmbedTemplate(EmbedType.DEFAULT, information.getInteractionEvent().getUser()).getEmbedBuilder();
-        output.setTitle(language.getMessage("error.permission.title"));
-        output.setDescription(language.getMessage("error.permission.message"));
+        EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getInteractionEvent().getUser()).getEmbedBuilder();
+        output.setTitle(language.getValue("error.permission.title"));
+        output.setDescription(language.getValue("error.permission.message"));
 
         // Send the error message.
         information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
