@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 
 public class Language {
-    private File languageResource = FloraBot.instance.getResourceFolder("languages");
+    private final File languageResource = FloraBot.instance.getResourceFolder("languages");
     @Getter
     private String languageCode;
 
@@ -24,11 +24,12 @@ public class Language {
         this.languageCode = languageCode;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public List<String> listLanguages() {
         List<String> list = new ArrayList<>();
 
         for (File file : languageResource.listFiles())
-            list.add(file.getName());
+            list.add(file.getName().replace(".yaml", ""));
 
         return list;
     }
@@ -40,7 +41,7 @@ public class Language {
     }
 
     @SneakyThrows
-    public String getMessage(String key) {
+    public String getValue(String key) {
         Dictionary dictionary = new YAMLManager("languages" + File.separator + languageCode + ".yaml").reader(Dictionary.class);
         return dictionary.getValues().get(key);
     }
