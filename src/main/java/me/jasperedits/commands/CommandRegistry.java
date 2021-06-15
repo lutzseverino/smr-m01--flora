@@ -3,9 +3,10 @@ package me.jasperedits.commands;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
-import me.jasperedits.commands.impl.interactions.Lang;
-import me.jasperedits.commands.impl.interactions.Prefix;
-import me.jasperedits.commands.impl.interactions.Privacy;
+import me.jasperedits.commands.impl.interactive.Config;
+import me.jasperedits.commands.impl.interactive.PrefixUpdate;
+import me.jasperedits.commands.impl.interactive.Privacy;
+import me.jasperedits.commands.impl.interactive.Setup;
 import me.jasperedits.commands.impl.legacy.UpdateGuildCommands;
 
 import java.util.Arrays;
@@ -23,9 +24,9 @@ public class CommandRegistry {
         interactiveCommands = Maps.newHashMap();
 
         List<Command> commandList = Arrays.asList(
-                new Lang(),
-                new me.jasperedits.commands.impl.interactions.Prefix(),
-                new me.jasperedits.commands.impl.legacy.Prefix(),
+                new PrefixUpdate(),
+                new Setup(),
+                new Config(),
                 new Privacy(),
                 new UpdateGuildCommands()
         );
@@ -34,7 +35,7 @@ public class CommandRegistry {
             for (String alias : commandClass.getClass().getAnnotation(CommandType.class).names()) {
                 switch (commandClass.getClass().getAnnotation(CommandType.class).format()) {
                     case LEGACY -> legacyCommands.put(alias.toLowerCase(), commandClass);
-                    case INTERACTION -> interactiveCommands.put(alias.toLowerCase(), commandClass);
+                    case INTERACTIVE -> interactiveCommands.put(alias.toLowerCase(), commandClass);
                 }
             }
         }
@@ -50,7 +51,7 @@ public class CommandRegistry {
 
         switch (format) {
             case LEGACY -> commandMap = legacyCommands;
-            case INTERACTION -> commandMap = interactiveCommands;
+            case INTERACTIVE -> commandMap = interactiveCommands;
             default -> throw new IllegalStateException("Unexpected value: " + format);
         }
 
@@ -70,7 +71,7 @@ public class CommandRegistry {
 
         switch (format) {
             case LEGACY -> commandMap = legacyCommands;
-            case INTERACTION -> commandMap = interactiveCommands;
+            case INTERACTIVE -> commandMap = interactiveCommands;
             default -> throw new IllegalStateException("Unexpected value: " + format);
         }
 

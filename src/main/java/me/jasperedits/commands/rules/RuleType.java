@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface RuleType {
-    CommandFormat[] applyFor() default {CommandFormat.LEGACY, CommandFormat.INTERACTION};
+    CommandFormat[] applyFor() default {CommandFormat.LEGACY, CommandFormat.INTERACTIVE};
 }

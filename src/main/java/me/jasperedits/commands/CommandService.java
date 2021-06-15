@@ -46,7 +46,7 @@ public class CommandService extends ListenerAdapter {
         String commandName = event.getName();
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
 
-        for (Command command : CommandRegistry.getAllCommands(CommandFormat.INTERACTION)) {
+        for (Command command : CommandRegistry.getAllCommands(CommandFormat.INTERACTIVE)) {
             CommandType type = command.getClass().getAnnotation(CommandType.class);
 
             for (String alias : type.names()) {
@@ -56,11 +56,12 @@ public class CommandService extends ListenerAdapter {
                     CommandInformation information = new CommandInformation(event, guild);
 
                     // Run all rule checkers, if one of them is false, the command will not be fired.
-                    if (RuleRegistry.runAllRules(CommandFormat.INTERACTION, type, information)) {
-                        CommandRegistry.byName(CommandFormat.INTERACTION, alias).execute(new CommandInformation(event, guild));
+                    if (RuleRegistry.runAllRules(CommandFormat.INTERACTIVE, type, information)) {
+                        CommandRegistry.byName(CommandFormat.INTERACTIVE, alias).execute(new CommandInformation(event, guild));
                     }
                 }
             }
         }
     }
+
 }

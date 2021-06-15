@@ -8,8 +8,9 @@ import net.dv8tion.jda.api.entities.User;
 public class EmbedTemplate {
     EmbedBuilder embedBuilder;
 
-    public EmbedTemplate(EmbedType embedType, User user) {
+    public EmbedTemplate(EmbedFormat embedType, User user) {
         this.embedBuilder = new EmbedBuilder().setColor(embedType.hexColor);
         this.embedBuilder.setAuthor(user.getName(), null,  user.getEffectiveAvatarUrl());
     }
+
 }

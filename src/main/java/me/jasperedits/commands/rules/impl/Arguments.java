@@ -6,7 +6,7 @@ import me.jasperedits.commands.CommandType;
 import me.jasperedits.commands.rules.Rule;
 import me.jasperedits.commands.rules.RuleType;
 import me.jasperedits.embeds.EmbedTemplate;
-import me.jasperedits.embeds.EmbedType;
+import me.jasperedits.embeds.EmbedFormat;
 import me.jasperedits.managers.Language;
 import net.dv8tion.jda.api.EmbedBuilder;
 
@@ -25,9 +25,9 @@ public class Arguments implements Rule {
         Language language = information.getGuild().getLanguage();
 
         // Build the output embed.
-        EmbedBuilder output = new EmbedTemplate(EmbedType.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
-        output.setTitle(language.getMessage("error.arguments.title"));
-        output.setDescription(language.getMessage("error.arguments.message"));
+        EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
+        output.setTitle(language.getValue("error.arguments.title"));
+        output.setDescription(language.getValue("error.arguments.message"));
 
         // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
