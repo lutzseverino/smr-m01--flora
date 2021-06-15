@@ -1,6 +1,7 @@
 package me.jasperedits;
 
 import lombok.Getter;
+import me.jasperedits.buttons.ButtonService;
 import me.jasperedits.commands.CommandService;
 import me.jasperedits.docs.BotValues;
 import me.jasperedits.listeners.Ready;
@@ -46,7 +47,7 @@ public class FloraBot {
 
         builder.setBulkDeleteSplittingEnabled(false);
         builder.setActivity(Activity.watching("your community grow"));
-        builder.addEventListeners(new CommandService(), new Ready());
+        builder.addEventListeners(new CommandService(), new ButtonService(), new Ready());
 
         JDA jda = builder.build().getShards().stream().findFirst().get();
     }
