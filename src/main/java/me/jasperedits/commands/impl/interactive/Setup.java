@@ -8,6 +8,7 @@ import me.jasperedits.buttons.ExecutorCache;
 import me.jasperedits.embeds.EmbedFormat;
 import me.jasperedits.embeds.EmbedTemplate;
 import me.jasperedits.managers.Language;
+import me.jasperedits.managers.Paginator;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Emoji;
@@ -22,6 +23,9 @@ import net.dv8tion.jda.api.interactions.components.Button;
         permission = Permission.ADMINISTRATOR
 )
 public class Setup implements Command {
+
+    Paginator paginator = new Paginator();
+
     @Override
     public void execute(CommandInformation information) {
         Language language = information.getGuild().getLanguage();
@@ -30,15 +34,22 @@ public class Setup implements Command {
         // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
 
-        output.setTitle(language.getValue("setup.first.title"));
-        output.setDescription(language.getValue("setup.first.message"));
-        output.setFooter("ID: 0000");
+        // Adds all the pages.
+        for (int page = 0; language.getValue("setup.page." + page + ".title") != null; page++) {
+            output.setTitle(language.getValue("setup.page." + page + ".title"));
+            output.setDescription(language.getValue("setup.page." + page + ".message"));
+            output.setFooter(language.getValue("setup.page")
+                    .replace("%s", String.valueOf(paginator.getPageCount())));
+            paginator.addPage(output.build());
+        }
+
+        output.setTitle(language.getValue("setup.page.0.title"));
+        output.setDescription(language.getValue("setup.page.0.message"));
+        output.setFooter(language.getValue("setup.page")
+                .replace("%s", "0"));
+
         Message message = information.getInteractionEvent().replyEmbeds(output.build())
-                .addActionRow(
-                        Button.primary("previous", Emoji.fromMarkdown("<:flora_previous:854084823371350086>"))
-                                .asDisabled(),
-                        Button.primary("next", Emoji.fromMarkdown("<:flora_next:854084370058051595>")),
-                        Button.danger("delete", Emoji.fromMarkdown("<:flora_delete:854093133359874048>"))).complete().retrieveOriginal().complete();
+                .addActionRows(paginator.getButtons()).complete().retrieveOriginal().complete();
 
         ExecutorCache.set(message.getId(), information);
     }
@@ -50,12 +61,7 @@ public class Setup implements Command {
     @Override
     public void button(ButtonClickEvent event, CommandInformation information) {
         if (information.getInteractionEvent().getMember().getId().equals(event.getMember().getId())) {
-            switch (event.getComponentId()) {
-                case "previous" -> {
-
-                }
-                case "delete" -> event.getMessage().delete().queue();
-            }
+            paginator.onButtonClick(event.getInteraction());
         } else {
             event.deferEdit().queue();
         }

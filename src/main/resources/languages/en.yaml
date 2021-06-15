@@ -17,8 +17,16 @@ values:
   buttons.error.expire.message: "You took too long to answer, try executing the command again."
 
   # Command: Setup
-  setup.first.title: "**__How do I setup this?__**"
-  setup.first.message: "Learn how to setup Flora using the following text tutorials and videos.\n\n**Click the buttons below to move through the tutorials.**"
+  setup.page: "Page number: %s"
+
+  setup.page.0.title: "**__\"How do I set this up?\"__**"
+  setup.page.0.message: "We've got some mini tutorials for new users that don't still don't know how to use Discord properly. Have in mind that you need some permissions for the majority of configurations.
+  \n\n**Navigate through the tutorials using the arrows below, you can dismiss the message using the trashcan.**"
+
+  setup.page.1.title: "**__Commands__**"
+  setup.page.1.message: "Flora uses the command list provided by Discord, you execute a command by writing `/` and choosing a command from the list.
+  \n\nThe commands that need to be used to set up the bot in general can be found under the `/config` command."
+
 
   # Command: Prefix
   prefix.uploaded.message: "The guild prefix has been updated to `%s`."

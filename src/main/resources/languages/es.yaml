@@ -13,12 +13,19 @@ values:
   error.title: "**__El comando notificó un error__**"
 
   # Buttons: Global
-  buttons.error.expire.title: "**__Este comando expiró_**"
+  buttons.error.expire.title: "**__Este comando expiró__**"
   buttons.error.expire.message: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
+
   # Command: Setup
-  setup.first.title: "**__¿Cómo se configura esto?__**"
-  setup.first.message: "Aprende a como configurar Flora usando los siguientes tutoriales de texto y vídeos
-  \n\n**Haz clic en los botones de abajo para moverte entre los tutoriales.**"
+  setup.page: "Page number: %s"
+
+  setup.page.0.title: "**__\"¿Cómo configuro esto?\"__**"
+  setup.page.0.message: "Tenemos unos pequeños tutoriales para nuevos usuarios que todavía no saben muy bien como usar Discord. Ten en cuenta que debes tener suficientes permisos para la mayoría de configuraciones.
+  \n\n**Navega por los tutoriales usando las flechas de abajo, puedes borrar este mensaje con la papelera.**"
+
+  setup.page.1.title: "**__Comandos__**"
+  setup.page.1.message: "Flora utiliza la lista de comandos proporcionada por Discord, ejecutas un comando escribiendo `/` y escogiendo un comando de la lista.
+  \n\nLos comandos que deben ser usados para configurar el bot en general pueden ser encontrados bajo el comando `/config`"
 
   # Command: Prefix
   prefix.uploaded.message: "El prefijo de este servidor fue cambiado a `%s`."
