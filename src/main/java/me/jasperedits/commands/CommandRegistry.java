@@ -3,10 +3,7 @@ package me.jasperedits.commands;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
-import me.jasperedits.commands.impl.interactive.Config;
-import me.jasperedits.commands.impl.interactive.PrefixUpdate;
-import me.jasperedits.commands.impl.interactive.Privacy;
-import me.jasperedits.commands.impl.interactive.Setup;
+import me.jasperedits.commands.impl.interactive.*;
 import me.jasperedits.commands.impl.legacy.UpdateGuildCommands;
 
 import java.util.Arrays;

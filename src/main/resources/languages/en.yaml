@@ -1,49 +1,52 @@
 values:
   # Errors
   error.permission.title: "**__Unauthorized action__**"
-  error.permission.message: "You are not allowed to execute that action."
+  error.permission.description: "You are not allowed to execute that action."
   error.arguments.title: "**__Wrong arguments__**"
-  error.arguments.message: "The inputted arguments are either incorrect or invalid, check our wiki."
+  error.arguments.description: "The inputted arguments are either incorrect or invalid, check our wiki."
+  error.command.title: "**__The command notified an error__**"
 
   # Settings
   settings.uploaded.title: "**__Setting updated__**"
-  settings.uploading.message: "Contacting database..."
-
-  # Command: Global
-  error.title: "**__The command notified an error__**"
+  settings.uploading.description: "Contacting database..."
 
   # Buttons: Global
   buttons.error.expire.title: "**__This command expired__**"
-  buttons.error.expire.message: "You took too long to answer, try executing the command again."
+  buttons.error.expire.description: "You took too long to answer, try executing the command again."
 
   # Command: Setup
-  setup.page: "Page number: %s"
-
-  setup.page.0.title: "**__\"How do I set this up?\"__**"
-  setup.page.0.message: "We've got some mini tutorials for new users that don't still don't know how to use Discord properly. Have in mind that you need some permissions for the majority of configurations.
-  \n\n**Navigate through the tutorials using the arrows below, you can dismiss the message using the trashcan.**"
-
-  setup.page.1.title: "**__Commands__**"
-  setup.page.1.message: "Flora uses the command list provided by Discord, you execute a command by writing `/` and choosing a command from the list.
-  \n\nThe commands that need to be used to set up the bot in general can be found under the `/config` command."
-
+  setup.pages: "Page number: %s"
+  # page 0
+  setup.page.0.title: "**__How to set up Flora__**"
+  setup.page.0.description: "We've got some mini tutorials for new users that don't still don't know how to use Discord properly. Have in mind that you need some permissions for the majority of configurations.
+  \n\n**Navigate through the tutorials using the arrows below (<:flora_click:854434461168828416>), you can dismiss the message using the trashcan (<:flora_click:854434461168828416>).**"
+  # page 1
+  setup.page.1.title: "**__Language__**"
+  setup.page.1.description: "Your server isn't native to English? Your language may be available! You can check it out under `/config language`.
+  \n\nIf your language isn't there, you can learn how to contribute with the `/about` command."
+  # page 2
+  setup.page.2.title: "**__Objective channel__**"
+  setup.page.2.description: "Where do you want Flora to send the objective? You can change that with the `/config channel` command.
+  \n\nKeep the channel tidy, because Flora will only send 1 message there and will take care of editing it."
 
   # Command: Prefix
-  prefix.uploaded.message: "The guild prefix has been updated to `%s`."
-  prefix.error.long.message: "A prefix can't be longer than 3 characters."
-  prefix.warning.message: "\n\nPlease note this setting **only** affects legacy commands (those executed using the prefix, not Discord built in feature).
+  prefix.uploaded.description: "The guild prefix has been updated to `%s`."
+  prefix.error.long.description: "A prefix can't be longer than 3 characters."
+  prefix.warning.description: "\n\nPlease note this setting **only** affects legacy commands (those executed using the prefix, not Discord built in feature).
 \n\n**Please have in mind that this feature will be pruned sooner rather than later.**"
 
   # Command: Config
-  config.lang.choose.title: "**__Choose a language__**"
-  config.lang.choose.message: "Choose between one of these available languages: `%s`"
-  config.lang.uploaded.message: "The guild language has been updated to `%s`."
-  config.lang.error.exists.message: "That language doesn't exist, pick one from the list: `%s`"
-  config.channel.uploaded.message: "The achievement channel has been updated to %s."
-  config.channel.error.type.message: "You need to provide a regular text channel."
+  # language
+  config.language.choose.title: "**__Choose a language__**"
+  config.language.choose.description: "Choose between one of these available languages: `%s`"
+  config.language.uploaded.description: "The guild language has been updated to `%s`."
+  config.language.error.exists.description: "That language doesn't exist, pick one from the list: `%s`"
+  # channel
+  config.channel.uploaded.description: "The achievement channel has been updated to %s."
+  config.channel.error.type.description: "You need to provide a regular text channel."
 
   # Command: Privacy
   privacy.notice.title: "**__Flora doesn't keep private information__**"
-  privacy.notice.message: "Messages are not stored, only the essentials for the bot to work. The code is also open source and you can check it out in the link below."
-  privacy.github.button: "GitHub repository"
-  privacy.privacy.button: "Full privacy notice"
+  privacy.notice.description: "Messages are not stored, only the essentials for the bot to work. The code is also open source and you can check it out in the link below (<:flora_click:854434461168828416>)."
+  privacy.github.button: "Source"
+  privacy.privacy.button: "Full Privacy Policy"

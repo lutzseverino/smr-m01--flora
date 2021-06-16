@@ -34,7 +34,7 @@ public class Permissions implements Rule {
         // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
         output.setTitle(language.getValue("error.permission.title"));
-        output.setDescription(language.getValue("error.permission.message"));
+        output.setDescription(language.getValue("error.permission.description"));
 
         // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
@@ -48,7 +48,7 @@ public class Permissions implements Rule {
         // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getInteractionEvent().getUser()).getEmbedBuilder();
         output.setTitle(language.getValue("error.permission.title"));
-        output.setDescription(language.getValue("error.permission.message"));
+        output.setDescription(language.getValue("error.permission.description"));
 
         // Send the error message.
         information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();

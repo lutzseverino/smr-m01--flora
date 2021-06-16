@@ -34,8 +34,8 @@ public class Config implements Command {
         switch (subcommand) {
             case "language" -> {
                 if (information.getInteractionEvent().getOption("code") == null) {
-                    output.setTitle(language.getValue("config.lang.choose.title"));
-                    output.setDescription(language.getValue("config.lang.choose.message")
+                    output.setTitle(language.getValue("config.language.choose.title"));
+                    output.setDescription(language.getValue("config.language.choose.description")
                             .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
                     information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
                     return;
@@ -44,7 +44,7 @@ public class Config implements Command {
                 String newLanguage = information.getInteractionEvent().getOption("code").getAsString().toLowerCase();
 
                 if (!language.checkAvailability(newLanguage)) {
-                    error(information, output, language.getValue("config.lang.error.exists.message")
+                    error(information, output, language.getValue("config.language.error.exists.description")
                             .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
                     return;
                 }
@@ -56,11 +56,11 @@ public class Config implements Command {
 
                 // Re-get the language to output correctly.
                 language = information.getGuild().getLanguage();
-                output.setDescription(language.getValue("config.lang.uploaded.message").replace("%s", newLanguage.toUpperCase()));
+                output.setDescription(language.getValue("config.language.uploaded.description").replace("%s", newLanguage.toUpperCase()));
             }
             case "channel" -> {
                 if (information.getInteractionEvent().getOption("channel").getChannelType() != ChannelType.TEXT) {
-                    error(information, output, language.getValue("config.channel.error.type.message"));
+                    error(information, output, language.getValue("config.channel.error.type.description"));
                     return;
                 }
                 GuildChannel newChannel = information.getInteractionEvent().getOption("channel").getAsGuildChannel();
@@ -69,7 +69,7 @@ public class Config implements Command {
                 information.getInteractionEvent().deferReply().queue();
                 information.getGuild().setSeedChannel(newChannel.getId());
                 GuildDAO.updateGuild(information.getGuild());
-                output.setDescription(language.getValue("config.channel.uploaded.message").replace("%s", newChannel.getAsMention()));
+                output.setDescription(language.getValue("config.channel.uploaded.description").replace("%s", newChannel.getAsMention()));
             }
         }
 
@@ -81,7 +81,7 @@ public class Config implements Command {
     public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
         Language language = information.getGuild().getLanguage();
 
-        output.setTitle(language.getValue("error.title"));
+        output.setTitle(language.getValue("error.command.title"));
         output.setDescription(errorMessage);
         information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
     }

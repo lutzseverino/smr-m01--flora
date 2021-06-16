@@ -35,7 +35,7 @@ public class PrefixUpdate implements Command {
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
 
         if (prefix.length() > 3) {
-            error(information, output, language.getValue("prefix.error.long.message"));
+            error(information, output, language.getValue("prefix.error.long.description"));
             return;
         }
 
@@ -46,8 +46,8 @@ public class PrefixUpdate implements Command {
         GuildDAO.updateGuild(information.getGuild());
 
         output.setTitle(language.getValue("settings.uploaded.title"));
-        output.setDescription(language.getValue("prefix.warning.message")
-                .replace("%s", prefix) + language.getValue("prefix.warning.message"));
+        output.setDescription(language.getValue("prefix.warning.description")
+                .replace("%s", prefix) + language.getValue("prefix.warning.description"));
         information.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 
@@ -55,7 +55,7 @@ public class PrefixUpdate implements Command {
     public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
         Language language = information.getGuild().getLanguage();
 
-        output.setTitle(language.getValue("error.title"));
+        output.setTitle(language.getValue("error.command.title"));
         output.setDescription(errorMessage);
         information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
     }

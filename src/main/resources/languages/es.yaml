@@ -1,48 +1,53 @@
 values:
   # Errors
   error.permission.title: "**__Acción no autorizada__**"
-  error.permission.message: "No tienes permitido ejecutar esa acción."
+  error.permission.description: "No tienes permitido ejecutar esa acción."
   error.arguments.title: "**__Argumentos incorrectos__**"
-  error.arguments.message: "Los argumentos introducidos son incorrectos o inválidos, revisa nuestra wiki."
+  error.arguments.description: "Los argumentos introducidos son incorrectos o inválidos, revisa nuestra wiki."
+  error.command.title: "**__El comando notificó un error__**"
 
   # Settings
   settings.uploaded.title: "**__Configuración actualizada__**"
-  settings.uploading.message: "Contactando con la base de datos..."
-
-  # Command: Global
-  error.title: "**__El comando notificó un error__**"
+  settings.uploading.description: "Contactando con la base de datos..."
 
   # Buttons: Global
   buttons.error.expire.title: "**__Este comando expiró__**"
-  buttons.error.expire.message: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
+  buttons.error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
 
   # Command: Setup
-  setup.page: "Page number: %s"
-
+  setup.pages: "Page number: %s"
+  # page 0
   setup.page.0.title: "**__\"¿Cómo configuro esto?\"__**"
-  setup.page.0.message: "Tenemos unos pequeños tutoriales para nuevos usuarios que todavía no saben muy bien como usar Discord. Ten en cuenta que debes tener suficientes permisos para la mayoría de configuraciones.
-  \n\n**Navega por los tutoriales usando las flechas de abajo, puedes borrar este mensaje con la papelera.**"
+  setup.page.0.description: "Tenemos unos pequeños tutoriales para nuevos usuarios que todavía no saben muy bien como usar Discord. Ten en cuenta que debes tener suficientes permisos para la mayoría de configuraciones.
+  \n\n**Navega por los tutoriales usando las flechas de abajo (<:flora_click:854434461168828416>), puedes borrar este mensaje con la papelera (<:flora_click:854434461168828416>).**"
+  # page 1
+  setup.page.1.title: "**__Idioma__**"
+  setup.page.1.description: "¿Tu servidor no es nativo al Español? ¡Puede que tu idioma esté disponible! Puedes revisarlo con `/config language`.
+  \n\nSi tu idioma no está ahí, puedes aprender como contribuir con el comando `/about`."
+  # page 2
+  setup.page.2.title: "**__Canal de objetivo__**"
+  setup.page.2.description: "¿Dónde quieres que Flora envíe el objetivo? Puedes cambiarlo con el comando `/config channel`.
+  \n\nMantén el canal limpio, porque Flora solo enviará 1 mensaje ahí y se encargará de editarlo."
 
-  setup.page.1.title: "**__Comandos__**"
-  setup.page.1.message: "Flora utiliza la lista de comandos proporcionada por Discord, ejecutas un comando escribiendo `/` y escogiendo un comando de la lista.
-  \n\nLos comandos que deben ser usados para configurar el bot en general pueden ser encontrados bajo el comando `/config`"
 
   # Command: Prefix
-  prefix.uploaded.message: "El prefijo de este servidor fue cambiado a `%s`."
-  prefix.error.long.message: "Un prefijo no puede ser más largo de 3 carácteres."
-  prefix.warning.message: "\n\nTen en cuenta que este ajuste **solo** funciona con comandos heredados (los que se ejecutan con el prefijo, no la función agregada de Discord).
+  prefix.uploaded.description: "El prefijo de este servidor fue cambiado a `%s`."
+  prefix.error.long.description: "Un prefijo no puede ser más largo de 3 carácteres."
+  prefix.warning.description: "\n\nTen en cuenta que este ajuste **solo** funciona con comandos heredados (los que se ejecutan con el prefijo, no la función agregada de Discord).
 \n\n**Por favor, ten en cuenta que está función desaparecerá más pronto que tarde.**"
 
   # Command: Config
-  config.lang.choose.title: "**__Escoge un idioma__**"
-  config.lang.choose.message: "Escoge entre estos idiomas disponibles: `%s`"
-  config.lang.uploaded.message: "El idioma de este servidor fue cambiado a `%s`."
-  config.lang.error.exists.message: "Ese idioma no existe, escoge uno de la lista: `%s`"
-  config.channel.uploaded.message: "El canal de logro fue actualizado a %s."
-  config.channel.error.type.message: "Debes proporcionar un canal de texto normal."
+  # language
+  config.language.choose.title: "**__Escoge un idioma__**"
+  config.language.choose.description: "Escoge entre estos idiomas disponibles: `%s`"
+  config.language.uploaded.description: "El idioma de este servidor fue cambiado a `%s`."
+  config.language.error.exists.description: "Ese idioma no existe, escoge uno de la lista: `%s`"
+  # channel
+  config.channel.uploaded.description: "El canal de logro fue actualizado a %s."
+  config.channel.error.type.description: "Debes proporcionar un canal de texto normal."
 
   # Command: Privacy
   privacy.notice.title: "**__Flora no guarda información privada__**"
-  privacy.notice.message: "Los mensajes no son guardados, solo lo esencial para que el bot funcione. El código también es libre y puedes revisarlo en el enlace de abajo."
-  privacy.github.button: "Repositorio de GitHub"
-  privacy.privacy.button: "Aviso de privacidad"
+  privacy.notice.description: "Los mensajes no son guardados, solo lo esencial para que el bot funcione. El código también es libre y puedes revisarlo en el enlace de abajo (<:flora_click:854434461168828416>)."
+  privacy.github.button: "Código fuente"
+  privacy.privacy.button: "Política de privacidad completa"

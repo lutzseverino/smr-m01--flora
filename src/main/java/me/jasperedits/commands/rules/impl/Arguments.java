@@ -27,7 +27,7 @@ public class Arguments implements Rule {
         // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
         output.setTitle(language.getValue("error.arguments.title"));
-        output.setDescription(language.getValue("error.arguments.message"));
+        output.setDescription(language.getValue("error.arguments.description"));
 
         // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
