@@ -9,8 +9,10 @@ import me.jasperedits.embeds.EmbedFormat;
 import me.jasperedits.embeds.EmbedTemplate;
 import me.jasperedits.managers.Language;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.components.Button;
 
 import java.util.Collections;
 
@@ -27,8 +29,10 @@ public class ButtonService extends ListenerAdapter {
             EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, event.getMember().getUser()).getEmbedBuilder();
 
             output.setTitle(language.getValue("buttons.error.expire.title"));
-            output.setDescription(language.getValue("buttons.error.expire.message"));
-            event.deferEdit().setEmbeds(output.build()).setActionRows(Collections.emptyList()).queue();
+            output.setDescription(language.getValue("buttons.error.expire.description"));
+            event.deferEdit().setEmbeds(output.build()).setActionRow(
+                    Button.secondary("help", Emoji.fromMarkdown("<:flora_help:854516649206218762>"))
+            ).queue();
         }
     }
 }
