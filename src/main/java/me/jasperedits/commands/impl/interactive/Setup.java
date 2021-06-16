@@ -1,5 +1,6 @@
 package me.jasperedits.commands.impl.interactive;
 
+import jdk.swing.interop.SwingInterOpUtils;
 import me.jasperedits.commands.Command;
 import me.jasperedits.commands.CommandFormat;
 import me.jasperedits.commands.CommandInformation;
@@ -34,18 +35,21 @@ public class Setup implements Command {
         // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
 
+        // Don't let the paginator stack previous calls.
+        paginator.getPages().clear();
+
         // Adds all the pages.
         for (int page = 0; language.getValue("setup.page." + page + ".title") != null; page++) {
             output.setTitle(language.getValue("setup.page." + page + ".title"));
-            output.setDescription(language.getValue("setup.page." + page + ".message"));
-            output.setFooter(language.getValue("setup.page")
+            output.setDescription(language.getValue("setup.page." + page + ".description"));
+            output.setFooter(language.getValue("setup.pages")
                     .replace("%s", String.valueOf(paginator.getPageCount())));
             paginator.addPage(output.build());
         }
 
         output.setTitle(language.getValue("setup.page.0.title"));
-        output.setDescription(language.getValue("setup.page.0.message"));
-        output.setFooter(language.getValue("setup.page")
+        output.setDescription(language.getValue("setup.page.0.description"));
+        output.setFooter(language.getValue("setup.pages")
                 .replace("%s", "0"));
 
         Message message = information.getInteractionEvent().replyEmbeds(output.build())

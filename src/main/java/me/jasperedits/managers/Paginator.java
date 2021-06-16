@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class Paginator {
 
-    List<MessageEmbed> pages = new ArrayList<>();
-    int index = 0;
+    private final List<MessageEmbed> pages = new ArrayList<>();
+    private int index = 0;
 
     public Paginator() {
     }
@@ -43,7 +43,7 @@ public class Paginator {
         return pages.get(index);
     }
 
-    public int getCurrentCount() {
+    public int getCurrentPageCount() {
         return index;
     }
 
