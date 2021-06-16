@@ -50,7 +50,7 @@ public class CommandService extends ListenerAdapter {
             CommandType type = command.getClass().getAnnotation(CommandType.class);
 
             for (String alias : type.names()) {
-                if (commandName.startsWith(alias)) {
+                if (commandName.equals(alias)) {
 
                     // Create a CommandInformation to pass to the rule checker.
                     CommandInformation information = new CommandInformation(event, guild);
