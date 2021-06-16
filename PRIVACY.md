@@ -20,7 +20,7 @@ We use the information you provide in a manner that is consistent with this Priv
 Information is kept for as long as its useful and provides a purpose.
 ### Security
 We take reasonable steps to protect the information provided via the Services from loss, misuse, and unauthorized access, disclosure, alteration, or destruction.
-### Links to other web sites
+### Links to other websites
 This Privacy Policy applies only to the Services. The Services may contain links to other web sites not operated or controlled by us (the “Third Party Sites”). The policies and procedures we described here do not apply to the Third Party Sites. The links from the Services do not imply that we endorse or have reviewed the Third Party Sites. We suggest contacting those sites directly for information on their privacy policies.
 
 ### Your control over your information

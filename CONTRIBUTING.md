@@ -4,7 +4,7 @@ Before committing a contribution, it's a good practice to create an issue in the
 ### Don't see an issue?
 Then your change hasn't been proposed, create an issue, we'll see if the change is needed and at what priority, please check your issue is related to Flora and not to any of our [dependencies](https://github.com/JasperEdits/Flora/blob/master/pom.xml).
 ### Ready to make a change?
-Exciting! Now it's time to fork the repository and start commiting your own changes, you can do this via GitHub Desktop, CLI or using built-in features in an IDE.
+Exciting! Now it's time to fork the repository and start committing your own changes, you can do this via GitHub Desktop, CLI or using built-in features in an IDE.
 - Make sure not to code meant for debugging or testing.
 ### PR
 When you're done, open a pull request or PR.
