@@ -1,4 +1,6 @@
 values:
+  general.what: "¿Qué es esto?"
+
   # Errors
   error.permission.title: "**__Acción no autorizada__**"
   error.permission.description: "No tienes permitido ejecutar esa acción."
@@ -6,18 +8,23 @@ values:
   error.arguments.description: "Los argumentos introducidos son incorrectos o inválidos, revisa nuestra wiki."
   error.command.title: "**__El comando notificó un error__**"
 
+  error.expire.title: "**__Este comando expiró__**"
+  error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
+  error.expire-help.title: "**__¿Qué es esto?__ Expiración**"
+  error.expire-help.description: "Al ejecutar un comando, Flora vincula el mensaje de respuesta con el usuario que ejecutó el comando.
+  \n\nPero esta información **no es permanente**, lo que significa que si Flora ya no puede acceder a ese vínculo, la interacción se tomará como expirada."
+  error.expire-help.field.title: "¿Por qué sucede esto?"
+  error.expire-help.field.description: "\n\n- Pasó demasiado tiempo desde la ejecución y la información fue eliminada automáticamente.
+  \n- Hubo un reinicio o mantenimiento que eliminó todas las entradas."
+
   # Settings
   settings.uploaded.title: "**__Configuración actualizada__**"
   settings.uploading.description: "Contactando con la base de datos..."
 
-  # Buttons: Global
-  buttons.error.expire.title: "**__Este comando expiró__**"
-  buttons.error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
-
   # Command: Setup
   setup.pages: "Page number: %s"
   # page 0
-  setup.page.0.title: "**__\"¿Cómo configuro esto?\"__**"
+  setup.page.0.title: "**__Cómo configurar Flora__**"
   setup.page.0.description: "Tenemos unos pequeños tutoriales para nuevos usuarios que todavía no saben muy bien como usar Discord. Ten en cuenta que debes tener suficientes permisos para la mayoría de configuraciones.
   \n\n**Navega por los tutoriales usando las flechas de abajo (<:flora_click:854434461168828416>), puedes borrar este mensaje con la papelera (<:flora_click:854434461168828416>).**"
   # page 1

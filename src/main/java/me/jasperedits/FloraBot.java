@@ -1,7 +1,7 @@
 package me.jasperedits;
 
 import lombok.Getter;
-import me.jasperedits.buttons.ButtonService;
+import me.jasperedits.buttons.ClickableService;
 import me.jasperedits.commands.CommandService;
 import me.jasperedits.docs.BotValues;
 import me.jasperedits.listeners.Ready;
@@ -9,9 +9,7 @@ import me.jasperedits.managers.DatabaseManager;
 import me.jasperedits.managers.MongoDatabaseManager;
 import me.jasperedits.managers.document.YAMLManager;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 
 import javax.security.auth.login.LoginException;
@@ -47,7 +45,7 @@ public class FloraBot {
 
         builder.setBulkDeleteSplittingEnabled(false);
         builder.setActivity(Activity.watching("your community grow"));
-        builder.addEventListeners(new CommandService(), new ButtonService(), new Ready());
+        builder.addEventListeners(new CommandService(), new ClickableService(), new Ready());
 
         JDA jda = builder.build().getShards().stream().findFirst().get();
     }

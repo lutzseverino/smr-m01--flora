@@ -1,4 +1,6 @@
 values:
+  general.what: "What's this?"
+
   # Errors
   error.permission.title: "**__Unauthorized action__**"
   error.permission.description: "You are not allowed to execute that action."
@@ -6,13 +8,18 @@ values:
   error.arguments.description: "The inputted arguments are either incorrect or invalid, check our wiki."
   error.command.title: "**__The command notified an error__**"
 
+  error.expire.title: "**__This command expired__**"
+  error.expire.description: "You took too long to answer, try executing the command again."
+  error.expire-help.title: "**__What's this?__ Expiration**"
+  error.expire-help.description: "Upon command execution, Flora links the output message with the user that executed the command.
+  \n\nBut this information **isn't permanent**, which means that if Flora can no longer access that link, the interaction will be deemed expired."
+  error.expire-help.field.title: "¿Why does this happen?"
+  error.expire-help.field.description: "\n\n- Too much time passed since the execution and the information was automatically deleted.
+  \n- There was a reboot or maintenance that deleted all entries."
+
   # Settings
   settings.uploaded.title: "**__Setting updated__**"
   settings.uploading.description: "Contacting database..."
-
-  # Buttons: Global
-  buttons.error.expire.title: "**__This command expired__**"
-  buttons.error.expire.description: "You took too long to answer, try executing the command again."
 
   # Command: Setup
   setup.pages: "Page number: %s"

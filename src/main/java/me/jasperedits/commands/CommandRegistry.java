@@ -52,10 +52,7 @@ public class CommandRegistry {
             default -> throw new IllegalStateException("Unexpected value: " + format);
         }
 
-        if (!commandMap.containsKey(name)) {
-            return null;
-        }
-        return commandMap.get(name);
+        return commandMap.getOrDefault(name, null);
     }
 
     /**

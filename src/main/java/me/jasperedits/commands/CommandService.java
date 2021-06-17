@@ -1,7 +1,7 @@
 package me.jasperedits.commands;
 
 import lombok.SneakyThrows;
-import me.jasperedits.commands.rules.RuleRegistry;
+import me.jasperedits.rules.RuleRegistry;
 import me.jasperedits.daos.GuildDAO;
 import me.jasperedits.docs.db.impl.Guild;
 import net.dv8tion.jda.api.entities.Message;
