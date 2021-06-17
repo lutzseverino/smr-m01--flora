@@ -1,10 +1,10 @@
-package me.jasperedits.commands.rules.impl;
+package me.jasperedits.rules.impl;
 
 import me.jasperedits.commands.CommandFormat;
 import me.jasperedits.commands.CommandInformation;
 import me.jasperedits.commands.CommandType;
-import me.jasperedits.commands.rules.Rule;
-import me.jasperedits.commands.rules.RuleType;
+import me.jasperedits.rules.Rule;
+import me.jasperedits.rules.RuleType;
 import me.jasperedits.embeds.EmbedTemplate;
 import me.jasperedits.embeds.EmbedFormat;
 import me.jasperedits.managers.Language;

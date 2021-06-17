@@ -1,4 +1,4 @@
-package me.jasperedits.commands.rules;
+package me.jasperedits.rules;
 
 import me.jasperedits.commands.CommandFormat;
 import me.jasperedits.commands.CommandInformation;

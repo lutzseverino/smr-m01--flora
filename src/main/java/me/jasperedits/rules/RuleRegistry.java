@@ -1,14 +1,14 @@
-package me.jasperedits.commands.rules;
+package me.jasperedits.rules;
 
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import me.jasperedits.commands.CommandFormat;
 import me.jasperedits.commands.CommandInformation;
 import me.jasperedits.commands.CommandType;
-import me.jasperedits.commands.rules.impl.Arguments;
-import me.jasperedits.commands.rules.impl.Permissions;
-import me.jasperedits.commands.rules.impl.Prefix;
-import me.jasperedits.commands.rules.impl.Webhook;
+import me.jasperedits.rules.impl.Arguments;
+import me.jasperedits.rules.impl.Permissions;
+import me.jasperedits.rules.impl.Prefix;
+import me.jasperedits.rules.impl.Webhook;
 
 import java.util.ArrayList;
 import java.util.Arrays;
