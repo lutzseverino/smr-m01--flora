@@ -3,7 +3,7 @@ package me.jasperedits.docs.db.impl;
 import lombok.Getter;
 import lombok.Setter;
 import me.jasperedits.docs.db.SimpleDocument;
-import me.jasperedits.managers.Language;
+import me.jasperedits.manager.Language;
 
 @Getter
 @Setter
@@ -18,17 +18,17 @@ public class Guild extends SimpleDocument {
 
     private String guildId;
 
-    private Language language = new Language("es");
+    private Language language = new Language("en");
 
     /*
      *  If a Discord guild sent 1,000,000,000 messages per second,
-     *  it would take roughly 292471 years to reach the long primitive limit.
+     *  it would take roughly 292 years to reach the long primitive limit.
      */
     private long messageCount;
 
     private long seedCount;
 
-    private String seedChannel;
+    private long seedObjectiveChannel;
 
     private String prefix = "f!";
 

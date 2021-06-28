@@ -1,5 +1,7 @@
 values:
-  general.what: "¿Qué es esto?"
+  commons.what: "¿Qué es esto?"
+  commons.wiki: "Visita la wiki"
+  commons.wiki-link: "https://github.com/JasperEdits/Flora/wiki/Inicio"
 
   # Errors
   error.permission.title: "**__Acción no autorizada__**"
@@ -11,8 +13,8 @@ values:
   error.expire.title: "**__Este comando expiró__**"
   error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
   error.expire-help.title: "**__¿Qué es esto?__ Expiración**"
-  error.expire-help.description: "Al ejecutar un comando, Flora vincula el mensaje de respuesta con el usuario que ejecutó el comando.
-  \n\nPero esta información **no es permanente**, lo que significa que si Flora ya no puede acceder a ese vínculo, la interacción se tomará como expirada."
+  error.expire-help.description: "Al ejecutar algunos comandos, Flora vincula guarda algunos datos temporales necesarios para funcionar.
+  \n\nPero esta información **no es permanente**, lo que significa que si Flora ya no puede acceder a estos datos, la interacción se tomará como expirada."
   error.expire-help.field.title: "¿Por qué sucede esto?"
   error.expire-help.field.description: "\n\n- Pasó demasiado tiempo desde la ejecución y la información fue eliminada automáticamente.
   \n- Hubo un reinicio o mantenimiento que eliminó todas las entradas."
@@ -22,7 +24,7 @@ values:
   settings.uploading.description: "Contactando con la base de datos..."
 
   # Command: Setup
-  setup.pages: "Page number: %s"
+  setup.pages: "Número de página: %s"
   # page 0
   setup.page.0.title: "**__Cómo configurar Flora__**"
   setup.page.0.description: "Tenemos unos pequeños tutoriales para nuevos usuarios que todavía no saben muy bien como usar Discord. Ten en cuenta que debes tener suficientes permisos para la mayoría de configuraciones.
@@ -32,8 +34,8 @@ values:
   setup.page.1.description: "¿Tu servidor no es nativo al Español? ¡Puede que tu idioma esté disponible! Puedes revisarlo con `/config language`.
   \n\nSi tu idioma no está ahí, puedes aprender como contribuir con el comando `/about`."
   # page 2
-  setup.page.2.title: "**__Canal de objetivo__**"
-  setup.page.2.description: "¿Dónde quieres que Flora envíe el objetivo? Puedes cambiarlo con el comando `/config channel`.
+  setup.page.2.title: "**__Canal de objetivo de mensajes__**"
+  setup.page.2.description: "¿Dónde quieres que Flora envíe el objetivo de mensajes? Puedes cambiarlo con el comando `/config mchannel`.
   \n\nMantén el canal limpio, porque Flora solo enviará 1 mensaje ahí y se encargará de editarlo."
 
 
@@ -41,7 +43,7 @@ values:
   prefix.uploaded.description: "El prefijo de este servidor fue cambiado a `%s`."
   prefix.error.long.description: "Un prefijo no puede ser más largo de 3 carácteres."
   prefix.warning.description: "\n\nTen en cuenta que este ajuste **solo** funciona con comandos heredados (los que se ejecutan con el prefijo, no la función agregada de Discord).
-\n\n**Por favor, ten en cuenta que está función desaparecerá más pronto que tarde.**"
+\n\n**Está función desaparecerá más pronto que tarde.**"
 
   # Command: Config
   # language
@@ -58,3 +60,7 @@ values:
   privacy.notice.description: "Los mensajes no son guardados, solo lo esencial para que el bot funcione. El código también es libre y puedes revisarlo en el enlace de abajo (<:flora_click:854434461168828416>)."
   privacy.github.button: "Código fuente"
   privacy.privacy.button: "Política de privacidad completa"
+
+  # Command: Ping
+  ping.pong.title: "**__¡Pong!__**"
+  ping.pong.description: "Se recibió una respuesta en `%s ms`."

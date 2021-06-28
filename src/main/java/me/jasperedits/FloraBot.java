@@ -1,13 +1,13 @@
 package me.jasperedits;
 
 import lombok.Getter;
-import me.jasperedits.buttons.ClickableService;
-import me.jasperedits.commands.CommandService;
+import me.jasperedits.clickable.ClickableService;
+import me.jasperedits.command.CommandService;
 import me.jasperedits.docs.BotValues;
 import me.jasperedits.listeners.Ready;
-import me.jasperedits.managers.DatabaseManager;
-import me.jasperedits.managers.MongoDatabaseManager;
-import me.jasperedits.managers.document.YAMLManager;
+import me.jasperedits.manager.DatabaseManager;
+import me.jasperedits.manager.MongoDatabaseManager;
+import me.jasperedits.manager.YAMLManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
