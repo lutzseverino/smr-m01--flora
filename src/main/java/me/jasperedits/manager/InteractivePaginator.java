@@ -1,7 +1,7 @@
-package me.jasperedits.managers;
+package me.jasperedits.manager;
 
 import net.dv8tion.jda.api.entities.Emoji;
-import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.Button;
 import net.dv8tion.jda.api.interactions.components.ButtonInteraction;
@@ -15,12 +15,12 @@ import java.util.List;
  *
  * Idea + Some code.
  */
-public class Paginator {
+public class InteractivePaginator {
 
-    private final List<MessageEmbed> pages = new ArrayList<>();
+    private final List<Message> pages = new ArrayList<>();
     private int index = 0;
 
-    public Paginator() {
+    public InteractivePaginator() {
     }
 
     private boolean isEnd() {
@@ -31,15 +31,15 @@ public class Paginator {
         return index == 0;
     }
 
-    private MessageEmbed getNext() {
+    private Message getNext() {
         return isEnd() ? pages.get(index) : pages.get(++index);
     }
 
-    private MessageEmbed getPrev() {
+    private Message getPrev() {
         return isStart() ? pages.get(0) : pages.get(--index);
     }
 
-    public MessageEmbed getCurrent() {
+    public Message getCurrent() {
         return pages.get(index);
     }
 
@@ -47,15 +47,15 @@ public class Paginator {
         return index;
     }
 
-    public void addPage(MessageEmbed message) {
+    public void addPage(Message message) {
         pages.add(message);
     }
 
-    public List<MessageEmbed> getPages() {
+    public List<Message> getPages() {
         return pages;
     }
 
-    public MessageEmbed getPage(int pageNumber) {
+    public Message getPage(int pageNumber) {
         return pages.get(pageNumber);
     }
 
@@ -65,13 +65,15 @@ public class Paginator {
 
 
     public void onButtonClick(ButtonInteraction interaction) {
-        String id = interaction.getComponentId();
+        String componentId = interaction.getComponentId();
 
-        switch (id) {
-            case "next" -> interaction.deferEdit().setEmbeds(getNext())
-                    .setActionRows(getButtons())
-                    .queue();
-            case "previous" -> interaction.deferEdit().setEmbeds(getPrev())
+        switch (componentId) {
+            case "next" -> {
+                interaction.deferEdit().setEmbeds(getNext().getEmbeds())
+                        .setActionRows(getButtons())
+                        .queue();
+            }
+            case "previous" -> interaction.deferEdit().setEmbeds(getPrev().getEmbeds())
                     .setActionRows(getButtons())
                     .queue();
             case "delete" -> interaction.getMessage().delete().queue();
