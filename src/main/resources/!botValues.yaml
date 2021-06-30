@@ -3,6 +3,6 @@ token: "add-token-here"
 
 databaseHostname: "localhost"
 databasePort: 27017
-databaseUsername: "flora"
-databasePassword: "hW%7D%7BkjD%3F%402r%5D2Vdc"
-databaseName: "floraDB"
+databaseUsername: "username"
+databasePassword: "passwd"
+databaseName: "dbName"
