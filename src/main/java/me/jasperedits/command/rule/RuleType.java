@@ -1,6 +1,6 @@
-package me.jasperedits.rule;
+package me.jasperedits.command.rule;
 
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

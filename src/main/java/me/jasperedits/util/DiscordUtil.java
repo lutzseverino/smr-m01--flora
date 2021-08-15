@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.interactions.components.Component;
 import java.util.concurrent.ExecutionException;
 
 @UtilityClass
-public class DiscordUtils {
+public class DiscordUtil {
     public void expire(ButtonClickEvent event) throws ExecutionException {
         Language language = GuildDAO.getGuild(event.getGuild().getId()).getLanguage();
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, event.getMember().getUser()).getEmbedBuilder();

@@ -1,14 +1,11 @@
-package me.jasperedits.rule;
+package me.jasperedits.command.rule;
 
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.rule.impl.*;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
-import me.jasperedits.rule.impl.Arguments;
-import me.jasperedits.rule.impl.Permissions;
-import me.jasperedits.rule.impl.Prefix;
-import me.jasperedits.rule.impl.Webhook;
+import me.jasperedits.command.annotation.CommandType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +21,8 @@ public class RuleRegistry {
                 new Permissions(),
                 new Arguments(),
                 new Prefix(),
-                new Webhook()
+                new Webhook(),
+                new Allowance()
         );
 
         rules.addAll(ruleList);

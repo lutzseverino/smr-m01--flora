@@ -1,17 +1,15 @@
-package me.jasperedits.rule.impl;
+package me.jasperedits.command.rule.impl;
 
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
 import me.jasperedits.embed.EmbedTemplate;
 import me.jasperedits.manager.Language;
-import me.jasperedits.rule.Rule;
-import me.jasperedits.rule.RuleType;
-import me.jasperedits.util.DiscordUtils;
+import me.jasperedits.command.rule.Rule;
+import me.jasperedits.command.rule.RuleType;
+import me.jasperedits.util.DiscordUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Emoji;
-import net.dv8tion.jda.api.interactions.components.Button;
 
 @RuleType(applyFor = {CommandFormat.LEGACY, CommandFormat.INTERACTIVE})
 public class Permissions implements Rule {
@@ -51,7 +49,7 @@ public class Permissions implements Rule {
         output.setDescription(language.getValue("error.permission.description"));
 
         // Send the error message.
-        information.getInteractionEvent().replyEmbeds(output.build()).addActionRow(DiscordUtils.addWikiComponent(language))
+        information.getInteractionEvent().replyEmbeds(output.build()).addActionRow(DiscordUtil.addWikiComponent(language))
                 .setEphemeral(true).queue();
     }
 

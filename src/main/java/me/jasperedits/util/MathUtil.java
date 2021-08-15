@@ -6,10 +6,10 @@ import me.jasperedits.guild.GuildDAO;
 import net.dv8tion.jda.api.entities.Guild;
 
 @UtilityClass
-public class MathUtils {
+public class MathUtil {
 
     @SneakyThrows
     public int getGuildObjective(Guild guild) {
-        return (int) (((10 * guild.getMemberCount()) / 3) - GuildDAO.getGuild(guild.getId()).getMessageCount());
+        return (int) (((Math.random()*(5-3+1)+3 * guild.getMemberCount())) - GuildDAO.getGuild(guild.getId()).getMessageCount());
     }
 }
