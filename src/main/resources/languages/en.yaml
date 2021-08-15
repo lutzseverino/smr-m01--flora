@@ -1,14 +1,19 @@
 values:
   commons.what: "What's this?"
   commons.wiki: "Visit the wiki"
-  commons.wiki-link: "https://github.com/JasperEdits/Flora/wiki/"
+  commons.wiki-link: "https://github.com/Frequential/Flora/wiki/"
 
   # Errors
   error.permission.title: "**__Unauthorized action__**"
-  error.permission.description: "You are not allowed to execute that action."
+  error.permission.description: "You are not authorized to execute that action."
+
   error.arguments.title: "**__Wrong arguments__**"
   error.arguments.description: "The inputted arguments are either incorrect or invalid, check our wiki."
+
   error.command.title: "**__The command notified an error__**"
+
+  error.allowance.title: "**__Disallowed action__**"
+  error.allowance.description: "Your user data or environment disallows that action."
 
   error.expire.title: "**__This command expired__**"
   error.expire.description: "You took too long to answer, try executing the command again."
@@ -35,7 +40,7 @@ values:
   \n\nIf your language isn't there, you can learn how to contribute with the `/about` command."
   # page 2
   setup.page.2.title: "**__Message objective channel__**"
-  setup.page.2.description: "Where do you want Flora to send the message objective? You can change that with the `/config mchannel` command.
+  setup.page.2.description: "Where do you want Flora to send the message objective? You can change that with the `/config messagechannel` command.
   \n\nKeep the channel tidy, because Flora will only send 1 message there and will take care of editing it."
 
   # Command: Prefix

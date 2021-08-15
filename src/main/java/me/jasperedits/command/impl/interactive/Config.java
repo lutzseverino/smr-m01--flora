@@ -1,12 +1,12 @@
 package me.jasperedits.command.impl.interactive;
 
 import me.jasperedits.command.Command;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
-import me.jasperedits.guild.GuildDAO;
-import me.jasperedits.embed.EmbedTemplate;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
+import me.jasperedits.embed.EmbedTemplate;
+import me.jasperedits.guild.GuildDAO;
 import me.jasperedits.manager.Language;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -21,63 +21,69 @@ import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
         permission = Permission.ADMINISTRATOR
 )
 public class Config implements Command {
+    Language language;
+    Member member;
+    EmbedBuilder output;
+    CommandInformation information;
 
     @Override
     public void execute(CommandInformation information) {
-        Language language = information.getGuild().getLanguage();
-        Member member = information.getInteractionEvent().getMember();
+        this.language = information.getGuild().getLanguage();
+        this.member = information.getInteractionEvent().getMember();
+        this.output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
+        this.information = information;
+
         String subcommand = information.getInteractionEvent().getSubcommandName();
 
-        // Create the embed used for output.
-        EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
-
         switch (subcommand) {
-            case "language" -> {
-                if (information.getInteractionEvent().getOption("code") == null) {
-                    output.setTitle(language.getValue("config.language.choose.title"));
-                    output.setDescription(language.getValue("config.language.choose.description")
-                            .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
-                    information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
-                    return;
-                }
-
-                String newLanguage = information.getInteractionEvent().getOption("code").getAsString().toLowerCase();
-
-                if (!language.checkAvailability(newLanguage)) {
-                    error(information, output, language.getValue("config.language.error.exists.description")
-                            .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
-                    return;
-                }
-
-                // Everything's good, we ack the command to give us more time.
-                information.getInteractionEvent().deferReply().queue();
-                information.getGuild().setLanguage(new Language(newLanguage));
-                GuildDAO.updateGuild(information.getGuild());
-
-                // Re-get the language to output correctly.
-                language = information.getGuild().getLanguage();
-                output.setDescription(language.getValue("config.language.uploaded.description").replace("%s", newLanguage.toUpperCase()));
-            }
-            case "mchannel" -> {
-                if (information.getInteractionEvent().getOption("channel").getChannelType() != ChannelType.TEXT) {
-                    error(information, output, language.getValue("config.channel.error.type.description"));
-                    return;
-                }
-                GuildChannel newChannel = information.getInteractionEvent().getOption("channel").getAsGuildChannel();
-
-                // Everything's good, we ack the command to give us more time.
-                information.getInteractionEvent().deferReply().queue();
-                information.getGuild().setSeedObjectiveChannel(newChannel.getIdLong());
-                GuildDAO.updateGuild(information.getGuild());
-                output.setDescription(language.getValue("config.channel.uploaded.description").replace("%s", newChannel.getAsMention()));
-            }
+            case "language" -> this.language();
+            case "messagechannel" -> this.messageChannel();
         }
 
         output.setTitle(language.getValue("settings.uploaded.title"));
         information.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 
-    @Override
+    public void language() {
+        if (information.getInteractionEvent().getOption("code") == null) {
+            output.setTitle(language.getValue("config.language.choose.title"));
+            output.setDescription(language.getValue("config.language.choose.description")
+                    .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
+            information.getInteractionEvent().replyEmbeds(output.build()).setEphemeral(true).queue();
+            return;
+        }
+
+        String newLanguage = information.getInteractionEvent().getOption("code").getAsString().toLowerCase();
+
+        if (!language.checkAvailability(newLanguage)) {
+            error(information, output, language.getValue("config.language.error.exists.description")
+                    .replace("%s", String.join(", ", language.listLanguages()).toUpperCase()));
+            return;
+        }
+
+        information.getInteractionEvent().deferReply().queue();
+        information.getGuild().setLanguage(new Language(newLanguage));
+        GuildDAO.updateGuild(information.getGuild());
+
+        language = information.getGuild().getLanguage();
+        output.setDescription(language.getValue("config.language.uploaded.description").replace("%s", newLanguage.toUpperCase()));
+    }
+
+    public void messageChannel() {
+        if (information.getInteractionEvent().getOption("channel").getChannelType() != ChannelType.TEXT) {
+            error(information, output, language.getValue("config.channel.error.type.description"));
+            return;
+        }
+        GuildChannel newChannel = information.getInteractionEvent().getOption("channel").getAsGuildChannel();
+
+        information.getInteractionEvent().deferReply().queue();
+        information.getGuild().setSeedObjectiveChannel(newChannel.getIdLong());
+        GuildDAO.updateGuild(information.getGuild());
+
+        output.setDescription(language.getValue("config.channel.uploaded.description").replace("%s", newChannel.getAsMention()));
+    }
+
+
     public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
         Language language = information.getGuild().getLanguage();
 
@@ -91,3 +97,12 @@ public class Config implements Command {
 
     }
 }
+
+
+
+
+
+
+
+
+

@@ -3,8 +3,11 @@ package me.jasperedits.command;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import lombok.experimental.UtilityClass;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.command.impl.interactive.*;
+import me.jasperedits.command.impl.legacy.CalculateCurrentGuildObjective;
 import me.jasperedits.command.impl.legacy.UpdateGuildCommands;
+import me.jasperedits.command.settings.CommandFormat;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,6 +29,7 @@ public class CommandRegistry {
                 new Ping(),
                 new Config(),
                 new Privacy(),
+                new CalculateCurrentGuildObjective(),
                 new UpdateGuildCommands() // Update interactions on the current guild. Only for testing purposes.
         );
 

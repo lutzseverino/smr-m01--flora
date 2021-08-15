@@ -4,14 +4,14 @@ import lombok.SneakyThrows;
 import me.jasperedits.cache.AnswerClassifierCache;
 import me.jasperedits.cache.PaginatorClassifierCache;
 import me.jasperedits.command.Command;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
 import me.jasperedits.embed.EmbedTemplate;
 import me.jasperedits.manager.InteractivePaginator;
 import me.jasperedits.manager.Language;
-import me.jasperedits.util.DiscordUtils;
+import me.jasperedits.util.DiscordUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -59,17 +59,13 @@ public class Setup implements Command {
         PaginatorClassifierCache.set(information.getInteractionEvent().getIdLong(), paginator);
     }
 
-    @Override
-    public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
-    }
-
     @SneakyThrows
     @Override
     public void button(ButtonClickEvent event, CommandInformation information) {
         if (information.getInteractionEvent().getMember().getId().equals(event.getMember().getId())) {
             if (PaginatorClassifierCache.get(information.getInteractionEvent().getIdLong()) != null)
                 PaginatorClassifierCache.get(information.getInteractionEvent().getIdLong()).onButtonClick(event);
-            else DiscordUtils.expire(event);
+            else DiscordUtil.expire(event);
         } else event.deferEdit().queue();
     }
 }

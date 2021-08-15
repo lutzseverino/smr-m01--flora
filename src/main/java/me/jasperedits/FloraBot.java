@@ -30,6 +30,10 @@ public class FloraBot {
         instance = this;
     }
 
+    public static FloraBot getInstance() {
+        return instance;
+    }
+
     public void init() throws LoginException {
 
         this.databaseManager = new MongoDatabaseManager(
@@ -39,7 +43,6 @@ public class FloraBot {
                 this.botValues.getDatabasePassword(),
                 this.botValues.getDatabaseName()
         );
-
 
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(this.botValues.getToken());
 
@@ -52,19 +55,14 @@ public class FloraBot {
 
     public File getResourceFolder(String path) {
         URL url = this.getClass().getClassLoader().getResource(path);
-        File file = null;
+        File file;
         try {
             assert url != null;
             file = new File(url.toURI());
         } catch (URISyntaxException e) {
             file = new File(url.getPath());
-        } finally {
-            return file;
         }
-    }
-
-    public static FloraBot getInstance() {
-        return instance;
+        return file;
     }
 
 }

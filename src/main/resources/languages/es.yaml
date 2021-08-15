@@ -5,10 +5,15 @@ values:
 
   # Errors
   error.permission.title: "**__Acción no autorizada__**"
-  error.permission.description: "No tienes permitido ejecutar esa acción."
+  error.permission.description: "No tienes autorizado ejecutar esa acción."
+
   error.arguments.title: "**__Argumentos incorrectos__**"
   error.arguments.description: "Los argumentos introducidos son incorrectos o inválidos, revisa nuestra wiki."
+
   error.command.title: "**__El comando notificó un error__**"
+
+  error.allowance.title: "**__Acción no permitida__**"
+  error.allowance.description: "Tus datos de usuario o entorno no permiten esa acción."
 
   error.expire.title: "**__Este comando expiró__**"
   error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
@@ -35,7 +40,7 @@ values:
   \n\nSi tu idioma no está ahí, puedes aprender como contribuir con el comando `/about`."
   # page 2
   setup.page.2.title: "**__Canal de objetivo de mensajes__**"
-  setup.page.2.description: "¿Dónde quieres que Flora envíe el objetivo de mensajes? Puedes cambiarlo con el comando `/config mchannel`.
+  setup.page.2.description: "¿Dónde quieres que Flora envíe el objetivo de mensajes? Puedes cambiarlo con el comando `/config messagechannel`.
   \n\nMantén el canal limpio, porque Flora solo enviará 1 mensaje ahí y se encargará de editarlo."
 
 

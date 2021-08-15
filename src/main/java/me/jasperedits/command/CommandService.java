@@ -1,11 +1,14 @@
 package me.jasperedits.command;
 
 import lombok.SneakyThrows;
-import me.jasperedits.rule.RuleRegistry;
+import me.jasperedits.command.annotation.CommandType;
+import me.jasperedits.command.rule.RuleRegistry;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.guild.GuildDAO;
 import me.jasperedits.docs.db.impl.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -17,7 +20,7 @@ public class CommandService extends ListenerAdapter {
 
     @SneakyThrows
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+    public void onMessageReceived(MessageReceivedEvent event) {
         Message message = event.getMessage();
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
 

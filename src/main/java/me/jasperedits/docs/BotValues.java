@@ -23,4 +23,6 @@ public class BotValues {
 
     private String databaseName;
 
+    private long owner;
+
 }
