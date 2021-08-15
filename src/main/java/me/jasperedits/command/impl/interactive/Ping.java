@@ -1,9 +1,9 @@
 package me.jasperedits.command.impl.interactive;
 
 import me.jasperedits.command.Command;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
 import me.jasperedits.embed.EmbedTemplate;
 import me.jasperedits.manager.Language;
@@ -36,7 +36,6 @@ public class Ping implements Command {
         });
     }
 
-    @Override
     public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
 
     }

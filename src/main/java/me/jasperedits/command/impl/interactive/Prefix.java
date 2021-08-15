@@ -2,9 +2,9 @@ package me.jasperedits.command.impl.interactive;
 
 import lombok.SneakyThrows;
 import me.jasperedits.command.Command;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
-import me.jasperedits.command.CommandType;
+import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.guild.GuildDAO;
 import me.jasperedits.embed.EmbedTemplate;
 import me.jasperedits.embed.EmbedFormat;
@@ -21,9 +21,6 @@ import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
         minArguments = 1, maxArguments = 1
 )
 public class Prefix implements Command {
-
-    public Prefix() {
-    }
 
     @SneakyThrows
     @Override
@@ -51,7 +48,6 @@ public class Prefix implements Command {
         information.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 
-    @Override
     public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
         Language language = information.getGuild().getLanguage();
 

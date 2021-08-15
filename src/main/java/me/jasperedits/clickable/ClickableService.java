@@ -2,10 +2,10 @@ package me.jasperedits.clickable;
 
 import lombok.SneakyThrows;
 import me.jasperedits.cache.AnswerClassifierCache;
-import me.jasperedits.command.CommandFormat;
+import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.command.CommandInformation;
 import me.jasperedits.command.CommandRegistry;
-import me.jasperedits.util.DiscordUtils;
+import me.jasperedits.util.DiscordUtil;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -18,7 +18,7 @@ public class ClickableService extends ListenerAdapter {
         CommandInformation information = AnswerClassifierCache.get(event.getMessage().getIdLong());
 
         if (clickable == null) if (information == null) {
-            DiscordUtils.expire(event);
+            DiscordUtil.expire(event);
         } else {
             CommandRegistry.byName(CommandFormat.INTERACTIVE, information.getInteractionEvent().getName()).button(event, information);
         }
