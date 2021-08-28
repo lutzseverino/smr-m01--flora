@@ -1,7 +1,7 @@
 package me.jasperedits.command.rule;
 
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 
 public interface Rule {
@@ -11,9 +11,9 @@ public interface Rule {
      * @param information the command information to get general information to answer properly and display more data.
      * @return whether the Rule was successful or not.
      */
-    boolean check(CommandFormat format, CommandType type, CommandInformation information);
+    boolean check(CommandFormat format, CommandType type, CommandData information);
 
-    void legacyOutput(CommandInformation information);
+    void legacyOutput(CommandData information);
 
-    void interactionOutput(CommandInformation information);
+    void interactionOutput(CommandData information);
 }

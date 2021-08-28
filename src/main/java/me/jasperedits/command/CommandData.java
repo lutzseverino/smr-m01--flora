@@ -9,19 +9,19 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import java.util.List;
 
 @Getter
-public class CommandInformation {
+public class CommandData {
     List<String> args;
     MessageReceivedEvent legacyEvent;
     SlashCommandEvent interactionEvent;
     Guild guild;
 
-    public CommandInformation(List<String> args, MessageReceivedEvent event, Guild guild) {
+    public CommandData(List<String> args, MessageReceivedEvent event, Guild guild) {
         this.args = args;
         this.legacyEvent = event;
         this.guild = guild;
     }
 
-    public CommandInformation(SlashCommandEvent interactionEvent, Guild guild) {
+    public CommandData(SlashCommandEvent interactionEvent, Guild guild) {
         this.interactionEvent = interactionEvent;
         this.guild = guild;
     }

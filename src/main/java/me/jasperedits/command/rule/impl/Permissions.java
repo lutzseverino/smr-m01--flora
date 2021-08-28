@@ -1,7 +1,7 @@
 package me.jasperedits.command.rule.impl;
 
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
 import me.jasperedits.embed.EmbedTemplate;
@@ -18,14 +18,14 @@ public class Permissions implements Rule {
     }
 
     @Override
-    public boolean check(CommandFormat format, CommandType type, CommandInformation information) {
+    public boolean check(CommandFormat format, CommandType type, CommandData information) {
         return switch (format) {
             case LEGACY -> information.getLegacyEvent().getMember().hasPermission(type.permission());
             case INTERACTIVE -> information.getInteractionEvent().getMember().hasPermission(type.permission());
         };
     }
 
-    public void legacyOutput(CommandInformation information) {
+    public void legacyOutput(CommandData information) {
         // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
@@ -39,7 +39,7 @@ public class Permissions implements Rule {
     }
 
     @Override
-    public void interactionOutput(CommandInformation information) {
+    public void interactionOutput(CommandData information) {
         // Get guild's language.
         Language language = information.getGuild().getLanguage();
 

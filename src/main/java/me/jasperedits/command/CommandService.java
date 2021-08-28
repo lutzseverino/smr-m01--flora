@@ -9,7 +9,6 @@ import me.jasperedits.docs.db.impl.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.ArrayList;
@@ -34,11 +33,11 @@ public class CommandService extends ListenerAdapter {
                     args.remove(0);
 
                     // Create a CommandInformation to pass to the rule checker.
-                    CommandInformation information = new CommandInformation(args, event, guild);
+                    CommandData information = new CommandData(args, event, guild);
 
                     // Run all rule checkers, if one of them is false, the command will not be fired.
                     if (RuleRegistry.runAllRules(CommandFormat.LEGACY, type, information))
-                        CommandRegistry.byName(CommandFormat.LEGACY, alias).execute(new CommandInformation(args, event, guild));
+                        CommandRegistry.byName(CommandFormat.LEGACY, alias).execute(new CommandData(args, event, guild));
                 }
             }
         }
@@ -56,11 +55,11 @@ public class CommandService extends ListenerAdapter {
                 if (commandName.equals(alias)) {
 
                     // Create a CommandInformation to pass to the rule checker.
-                    CommandInformation information = new CommandInformation(event, guild);
+                    CommandData information = new CommandData(event, guild);
 
                     // Run all rule checkers, if one of them is false, the command will not be fired.
                     if (RuleRegistry.runAllRules(CommandFormat.INTERACTIVE, type, information)) {
-                        CommandRegistry.byName(CommandFormat.INTERACTIVE, alias).execute(new CommandInformation(event, guild));
+                        CommandRegistry.byName(CommandFormat.INTERACTIVE, alias).execute(new CommandData(event, guild));
                     }
                 }
             }

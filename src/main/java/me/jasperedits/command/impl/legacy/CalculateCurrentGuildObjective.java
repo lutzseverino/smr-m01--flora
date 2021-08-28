@@ -1,7 +1,7 @@
 package me.jasperedits.command.impl.legacy;
 
 import me.jasperedits.command.Command;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.command.settings.CommandFormat;
 import me.jasperedits.util.MathUtil;
@@ -15,7 +15,7 @@ import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 public class CalculateCurrentGuildObjective implements Command {
 
     @Override
-    public void execute(CommandInformation information) {
+    public void execute(CommandData information) {
         Guild JDAGuild = information.getLegacyEvent().getGuild();
 
         information.getLegacyEvent().getMessage().reply("(<:flora_devMode:876605895264571434>) Variable: " + JDAGuild.getMemberCount() + " = "
@@ -23,6 +23,6 @@ public class CalculateCurrentGuildObjective implements Command {
     }
 
     @Override
-    public void button(ButtonClickEvent event, CommandInformation information) {
+    public void button(ButtonClickEvent event, CommandData information) {
     }
 }

@@ -2,7 +2,7 @@ package me.jasperedits.command.impl.interactive;
 
 import me.jasperedits.command.Command;
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedTemplate;
 import me.jasperedits.embed.EmbedFormat;
@@ -20,7 +20,7 @@ import net.dv8tion.jda.api.interactions.components.Button;
 public class Privacy implements Command {
 
     @Override
-    public void execute(CommandInformation information) {
+    public void execute(CommandData information) {
         Language language = information.getGuild().getLanguage();
         Member member = information.getInteractionEvent().getMember();
 
@@ -39,11 +39,11 @@ public class Privacy implements Command {
 
     }
 
-    public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
+    public void error(CommandData information, EmbedBuilder output, String errorMessage) {
     }
 
     @Override
-    public void button(ButtonClickEvent event, CommandInformation information) {
+    public void button(ButtonClickEvent event, CommandData information) {
 
     }
 }

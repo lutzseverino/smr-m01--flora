@@ -3,7 +3,7 @@ package me.jasperedits.command.impl.interactive;
 import lombok.SneakyThrows;
 import me.jasperedits.command.Command;
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.guild.GuildDAO;
 import me.jasperedits.embed.EmbedTemplate;
@@ -24,7 +24,7 @@ public class Prefix implements Command {
 
     @SneakyThrows
     @Override
-    public void execute(CommandInformation information) {
+    public void execute(CommandData information) {
         Language language = information.getGuild().getLanguage();
         Member member = information.getInteractionEvent().getMember();
         String prefix = information.getInteractionEvent().getOption("prefix").getAsString();
@@ -48,7 +48,7 @@ public class Prefix implements Command {
         information.getInteractionEvent().getHook().sendMessageEmbeds(output.build()).queue();
     }
 
-    public void error(CommandInformation information, EmbedBuilder output, String errorMessage) {
+    public void error(CommandData information, EmbedBuilder output, String errorMessage) {
         Language language = information.getGuild().getLanguage();
 
         output.setTitle(language.getValue("error.command.title"));
@@ -57,7 +57,7 @@ public class Prefix implements Command {
     }
 
     @Override
-    public void button(ButtonClickEvent event, CommandInformation information) {
+    public void button(ButtonClickEvent event, CommandData information) {
 
     }
 }

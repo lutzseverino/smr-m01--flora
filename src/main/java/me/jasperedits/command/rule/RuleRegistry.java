@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.experimental.UtilityClass;
 import me.jasperedits.command.rule.impl.*;
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class RuleRegistry {
         return rules;
     }
 
-    public boolean runAllRules(CommandFormat format, CommandType type, CommandInformation information) {
+    public boolean runAllRules(CommandFormat format, CommandType type, CommandData information) {
         for (Rule rule : rules) {
             if (Arrays.asList(rule.getClass().getAnnotation(RuleType.class).applyFor()).contains(format) && !rule.check(format, type, information)) {
                 switch (type.format()) {

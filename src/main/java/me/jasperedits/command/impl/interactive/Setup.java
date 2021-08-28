@@ -5,7 +5,7 @@ import me.jasperedits.cache.AnswerClassifierCache;
 import me.jasperedits.cache.PaginatorClassifierCache;
 import me.jasperedits.command.Command;
 import me.jasperedits.command.settings.CommandFormat;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.embed.EmbedFormat;
 import me.jasperedits.embed.EmbedTemplate;
@@ -27,7 +27,7 @@ import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 public class Setup implements Command {
 
     @Override
-    public void execute(CommandInformation information) {
+    public void execute(CommandData information) {
         Language language = information.getGuild().getLanguage();
         Member member = information.getInteractionEvent().getMember();
 
@@ -61,7 +61,7 @@ public class Setup implements Command {
 
     @SneakyThrows
     @Override
-    public void button(ButtonClickEvent event, CommandInformation information) {
+    public void button(ButtonClickEvent event, CommandData information) {
         if (information.getInteractionEvent().getMember().getId().equals(event.getMember().getId())) {
             if (PaginatorClassifierCache.get(information.getInteractionEvent().getIdLong()) != null)
                 PaginatorClassifierCache.get(information.getInteractionEvent().getIdLong()).onButtonClick(event);

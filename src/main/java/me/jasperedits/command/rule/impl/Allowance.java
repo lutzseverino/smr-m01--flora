@@ -1,7 +1,7 @@
 package me.jasperedits.command.rule.impl;
 
 import me.jasperedits.FloraBot;
-import me.jasperedits.command.CommandInformation;
+import me.jasperedits.command.CommandData;
 import me.jasperedits.command.annotation.CommandType;
 import me.jasperedits.command.rule.Rule;
 import me.jasperedits.command.rule.RuleType;
@@ -16,7 +16,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 @RuleType()
 public class Allowance implements Rule {
     @Override
-    public boolean check(CommandFormat format, CommandType type, CommandInformation information) {
+    public boolean check(CommandFormat format, CommandType type, CommandData information) {
         if (type.allowance().equals(CommandAllowance.EVERYTHING)) return true;
 
         switch (format) {
@@ -60,7 +60,7 @@ public class Allowance implements Rule {
     }
 
     @Override
-    public void legacyOutput(CommandInformation information) {
+    public void legacyOutput(CommandData information) {
         // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
@@ -74,7 +74,7 @@ public class Allowance implements Rule {
     }
 
     @Override
-    public void interactionOutput(CommandInformation information) {
+    public void interactionOutput(CommandData information) {
         // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
