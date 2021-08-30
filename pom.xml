@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.jasperedits</groupId>
+    <groupId>me.jasperedits.flora</groupId>
     <artifactId>Flora</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -20,7 +20,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>me.jasperedits.Main</mainClass>
+                            <mainClass>me.jasperedits.flora.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -131,6 +131,13 @@
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.2.0</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.12.0</version>
         </dependency>
 
         <dependency>
