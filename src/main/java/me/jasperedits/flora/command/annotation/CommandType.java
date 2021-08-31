@@ -15,7 +15,7 @@ public @interface CommandType {
 
     Permission permission() default Permission.VIEW_CHANNEL;
 
-    Allowance allowance() default Allowance.EVERYTHING;
+    Allowance allowance() default Allowance.CHAT_GUILD;
 
     int minArguments() default 0;
 

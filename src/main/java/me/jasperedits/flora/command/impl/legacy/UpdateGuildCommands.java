@@ -10,6 +10,7 @@ import me.jasperedits.flora.command.annotation.LonelyCommand;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
+import net.dv8tion.jda.api.interactions.commands.build.SubcommandGroupData;
 
 @CommandType(
         format = Format.LEGACY,
@@ -31,7 +32,11 @@ public class UpdateGuildCommands extends Command {
                                         .addOption(OptionType.STRING, "code", "A valid language code.")),
                         new CommandData("setup", "Get quick tutorials on how to set Flora up."),
                         new CommandData("ping", "Ping Flora."),
-                        new CommandData("test", "dummy interaction"))
+                        new CommandData("start", "Start community goals.")
+                                .addSubcommandGroups(new SubcommandGroupData("messages", "Start message community goals.")
+                                                .addSubcommands(new SubcommandData("goal", "A simple and automatic message goal.")),
+                                        new SubcommandGroupData("user", "Start user community goals.")
+                                                .addSubcommands(new SubcommandData("goal", "A simple and automatic user goal."))))
                 .queue();
 
         information.getLegacyEvent().getMessage().reply("(<:flora_devMode:876605895264571434>) Flora requested to update guild commands to Discord.").mentionRepliedUser(false).queue();

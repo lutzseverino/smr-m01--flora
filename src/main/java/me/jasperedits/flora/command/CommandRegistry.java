@@ -7,6 +7,7 @@ import me.jasperedits.flora.command.annotation.ButtonAction;
 import me.jasperedits.flora.command.annotation.CommandNames;
 import me.jasperedits.flora.command.annotation.CommandType;
 import me.jasperedits.flora.command.impl.interactive.*;
+import me.jasperedits.flora.command.impl.interactive.start.Start;
 import me.jasperedits.flora.command.impl.legacy.CalculateCurrentGuildObjective;
 import me.jasperedits.flora.command.impl.legacy.UpdateGuildCommands;
 
@@ -30,6 +31,7 @@ public class CommandRegistry {
                 new Ping(),
                 new Config(),
                 new Privacy(),
+                new Start(),
                 new CalculateCurrentGuildObjective(),
                 new UpdateGuildCommands()
         );

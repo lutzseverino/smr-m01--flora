@@ -1,17 +1,15 @@
 package me.jasperedits.flora.command.impl.interactive.start;
 
 import me.jasperedits.flora.command.ExecutionData;
-import me.jasperedits.flora.command.SubcommandGroup;
+import me.jasperedits.flora.command.ChildCommand;
+import me.jasperedits.flora.command.annotation.CommandNames;
 import me.jasperedits.flora.command.annotation.Subcommand;
 
-public class StartUser extends SubcommandGroup {
-
-    public StartUser() {
-        super();
-    }
+@CommandNames("user")
+public class StartUser extends ChildCommand {
 
     @Subcommand
     public void goal(ExecutionData data) {
-
+        data.getInteractionEvent().reply("This feature is still under development.").queue();
     }
 }

@@ -63,6 +63,7 @@ public class Config extends Command {
             error(data, output, language.getValue("config.channel.error.type.description"));
             return;
         }
+
         GuildChannel newChannel = data.getInteractionEvent().getOption("channel").getAsGuildChannel();
 
         data.getInteractionEvent().deferReply().queue();
