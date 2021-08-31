@@ -21,7 +21,6 @@ public class Ping extends Command {
         Language language = data.getGuild().getLanguage();
         Member member = data.getInteractionEvent().getMember();
 
-        // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
 
         output.setTitle(language.getValue("ping.pong.title"));
