@@ -13,22 +13,19 @@ import net.dv8tion.jda.api.EmbedBuilder;
 public class Arguments implements Rule {
     @Override
     public boolean check(CommandType.Format format, CommandType type, ExecutionData data) {
-        int argumentSize = data.getArgs().size();
+        int argumentSize = data.getArgs().length;
 
         return argumentSize >= type.minArguments() && argumentSize <= type.maxArguments();
     }
 
     @Override
     public void legacyOutput(ExecutionData information) {
-        // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
-        // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
         output.setTitle(language.getValue("error.arguments.title"));
         output.setDescription(language.getValue("error.arguments.description"));
 
-        // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
     }
 

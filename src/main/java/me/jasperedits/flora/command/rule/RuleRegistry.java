@@ -19,7 +19,6 @@ public class RuleRegistry {
         List<Rule> ruleList = Arrays.asList(
                 new Permissions(),
                 new Arguments(),
-                new Prefix(),
                 new Webhook(),
                 new Allowance()
         );
