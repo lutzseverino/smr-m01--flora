@@ -10,16 +10,16 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 @Getter
-public abstract class SubcommandGroup extends Command {
+public abstract class ChildCommand extends Command {
 
     private final Map<String, MethodSubcommand> subcommandMap = Maps.newHashMap();
 
-    public SubcommandGroup() {
+    public ChildCommand() {
         for (Method method : this.getClass().getMethods()) {
             CommandNames names = method.getAnnotation(CommandNames.class);
 
             if (method.isAnnotationPresent(LonelyCommand.class)) {
-                throw new IllegalArgumentException("A subcommand group cannot contain a lonely command");
+                throw new IllegalArgumentException("A child command cannot contain a lonely command");
             }
 
             if (method.isAnnotationPresent(Subcommand.class)) {

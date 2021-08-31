@@ -17,7 +17,7 @@ public abstract class Command {
 
     private Method lonelyMethod;
     private final Map<String, MethodSubcommand> subcommandMap = Maps.newHashMap();
-    private final Map<String, SubcommandGroup> childCommandMap = Maps.newHashMap();
+    private final Map<String, ChildCommand> childCommandMap = Maps.newHashMap();
 
     public Command() {
         for (Method method : this.getClass().getMethods()) {
@@ -40,15 +40,15 @@ public abstract class Command {
         }
     }
 
-    public void addSubcommandGroup(SubcommandGroup subcommandGroup) {
-        CommandNames names = this.getClass().getAnnotation(CommandNames.class);
+    public void addChild(ChildCommand childCommand) {
+        CommandNames names = childCommand.getClass().getAnnotation(CommandNames.class);
 
         if (names != null) {
             for (String name : names.value()) {
-                this.childCommandMap.put(name.toLowerCase(), subcommandGroup);
+                this.childCommandMap.put(name.toLowerCase(), childCommand);
             }
         }
 
-        this.childCommandMap.put(this.getClass().getName().toLowerCase(), subcommandGroup);
+        this.childCommandMap.put(childCommand.getClass().getSimpleName().toLowerCase(), childCommand);
     }
 }

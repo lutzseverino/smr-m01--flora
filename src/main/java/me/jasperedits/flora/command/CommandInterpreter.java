@@ -50,8 +50,9 @@ public class CommandInterpreter extends ListenerAdapter {
 
         if (command != null && RuleRegistry.runAllRules(CommandType.Format.INTERACTIVE, command.getClass().getAnnotation(CommandType.class), data)) {
             Method finalStep = CommandMethodFinder.evaluate(path, command);
+
             if (finalStep != null) {
-                finalStep.invoke(command, data);
+                finalStep.invoke(CommandMethodFinder.getFinalObject(), data);
                 return;
             }
         }
