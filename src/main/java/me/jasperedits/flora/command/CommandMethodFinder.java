@@ -13,10 +13,10 @@ public class CommandMethodFinder {
      * @return the evaluated final step
      */
     public Method evaluate(String[] path, Command firstCommand) {
-        for (String step : path) {
-            if (firstCommand.getLonelyMethod() != null)
-                return firstCommand.getLonelyMethod();
+        if (firstCommand.getLonelyMethod() != null)
+            return firstCommand.getLonelyMethod();
 
+        for (String step : path) {
             if (firstCommand.getSubcommandMap().get(step) != null)
                 return firstCommand.getSubcommandMap().get(step).getMethod();
 

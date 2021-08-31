@@ -9,7 +9,6 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Emoji;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.interactions.components.Button;
 import net.dv8tion.jda.api.interactions.components.Component;
 
@@ -37,21 +36,6 @@ public class DiscordUtil {
         output.setTitle(language.getValue("error.unknown-command.title"));
         output.setDescription(language.getValue("error.unknown-command.description"));
         event.deferReply().addEmbeds(output.build()).addActionRow(
-                        Button.secondary("expireHelp", language.getValue("commons.what"))
-                                .withEmoji(Emoji.fromMarkdown("<:flora_help:854516649206218762>")),
-                        addWikiComponent(language))
-                .queue();
-    }
-
-    public void throwUnknownCommand(MessageReceivedEvent event)  throws ExecutionException  {
-        Language language = GuildDAO.getGuild(event.getGuild().getId()).getLanguage();
-        EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, event.getMember().getUser()).getEmbedBuilder();
-
-        output.setTitle(language.getValue("error.unknown-command.title"));
-        output.setDescription(language.getValue("error.unknown-command.description"));
-        event.getMessage().reply(output.build()).setActionRow(
-                        Button.secondary("expireHelp", language.getValue("commons.what"))
-                                .withEmoji(Emoji.fromMarkdown("<:flora_help:854516649206218762>")),
                         addWikiComponent(language))
                 .queue();
     }
