@@ -15,6 +15,9 @@ values:
   error.allowance.title: "**__Disallowed action__**"
   error.allowance.description: "Your user data or environment disallows that action."
 
+  error.unknown-command.title: "**__I couldn't find that for you__**"
+  error.unknown-command.description: "This is unusual, I couldn't find that action."
+
   error.expire.title: "**__This command expired__**"
   error.expire.description: "You took too long to answer, try executing the command again."
   error.expire-help.title: "**__What's this?__ Expiration**"

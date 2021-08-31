@@ -15,6 +15,9 @@ values:
   error.allowance.title: "**__Acción no permitida__**"
   error.allowance.description: "Tus datos de usuario o entorno no permiten esa acción."
 
+  error.unknown-command.title: "**__No pude encontrar eso__**"
+  error.unknown-command.description: "Esto no suele pasar, no pude encontrar esa acción."
+
   error.expire.title: "**__Este comando expiró__**"
   error.expire.description: "Tardaste demasiado en responder, prueba a ejecutar el comando de nuevo."
   error.expire-help.title: "**__¿Qué es esto?__ Expiración**"
