@@ -12,13 +12,14 @@ public class CommandMethodFinder {
     Object finalObject;
 
     /**
-     * @param path         the command path
-     * @param firstCommand the first Command object
-     * @return the evaluated final step
+     * @param path         the command hierarchy path
+     * @param firstCommand the first {@link Command} object
+     * @return the evaluated final {@link Method}
      */
     public Method evaluate(String[] path, Command firstCommand) {
         if (firstCommand.getLonelyMethod() != null) {
-            finalObject = firstCommand; return firstCommand.getLonelyMethod();
+            finalObject = firstCommand;
+            return firstCommand.getLonelyMethod();
         }
 
         MethodSubcommand methodSubcommand;
@@ -29,7 +30,8 @@ public class CommandMethodFinder {
             methodSubcommand = firstCommand.getSubcommandMap().get(step);
 
             if (methodSubcommand != null) {
-                finalObject = methodSubcommand.getChild(); return methodSubcommand.getMethod();
+                finalObject = methodSubcommand.getChild();
+                return methodSubcommand.getMethod();
             }
 
             if (firstCommand.getChildCommandMap().get(step) != null) {
@@ -41,7 +43,8 @@ public class CommandMethodFinder {
             methodSubcommand = firstCommand.getChildCommandMap().get(nestedStep).getSubcommandMap().get(step);
 
             if (isNested && methodSubcommand != null) {
-                finalObject = methodSubcommand.getChild(); return methodSubcommand.getMethod();
+                finalObject = methodSubcommand.getChild();
+                return methodSubcommand.getMethod();
             }
         }
         return null;

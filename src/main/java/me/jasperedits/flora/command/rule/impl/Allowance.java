@@ -59,29 +59,23 @@ public class Allowance implements Rule {
 
     @Override
     public void legacyOutput(ExecutionData information) {
-        // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
-        // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
         output.setTitle(language.getValue("error.allowance.title"));
         output.setDescription(language.getValue("error.allowance.description"));
 
-        // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
     }
 
     @Override
     public void interactionOutput(ExecutionData information) {
-        // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
-        // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getInteractionEvent().getUser()).getEmbedBuilder();
         output.setTitle(language.getValue("error.allowance.title"));
         output.setDescription(language.getValue("error.allowance.description"));
 
-        // Send the error message.
         information.getInteractionEvent().replyEmbeds(output.build()).addActionRow(DiscordUtil.addWikiComponent(language))
                 .setEphemeral(true).queue();
     }

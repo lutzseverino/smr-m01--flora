@@ -15,9 +15,9 @@ import java.util.Map;
 @Getter
 public abstract class Command {
 
-    private Method lonelyMethod;
     private final Map<String, MethodSubcommand> subcommandMap = Maps.newHashMap();
     private final Map<String, ChildCommand> childCommandMap = Maps.newHashMap();
+    private Method lonelyMethod;
 
     public Command() {
         for (Method method : this.getClass().getMethods()) {
@@ -28,18 +28,25 @@ public abstract class Command {
             else names.add(method.getName().toLowerCase());
 
             if (method.isAnnotationPresent(LonelyCommand.class)) {
-                    this.lonelyMethod = method;
+                this.lonelyMethod = method;
             }
 
             if (method.isAnnotationPresent(Subcommand.class)) {
-                    for (String name : names) {
-                        this.subcommandMap.put(name.toLowerCase(), new MethodSubcommand(method, this));
-                    }
+                for (String name : names) {
+                    this.subcommandMap.put(name.toLowerCase(), new MethodSubcommand(method, this));
+                }
                 this.subcommandMap.put(method.getName().toLowerCase(), new MethodSubcommand(method, this));
             }
         }
     }
 
+    /**
+     * <p>
+     * Child commands will mimic Discord's subcommand groups hierarchy, this applies for legacy commands.
+     * </p>
+     *
+     * @param childCommand a {@link ChildCommand} object
+     */
     public void addChild(ChildCommand childCommand) {
         CommandNames names = childCommand.getClass().getAnnotation(CommandNames.class);
 

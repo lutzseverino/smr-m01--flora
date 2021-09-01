@@ -33,7 +33,6 @@ public class Prefix extends Command {
             return;
         }
 
-        // Everything's good, we ack the command to give us more time.
         data.getInteractionEvent().deferReply().queue();
 
         data.getGuild().setPrefix(prefix);

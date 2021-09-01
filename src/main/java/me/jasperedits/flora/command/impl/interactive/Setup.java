@@ -32,10 +32,8 @@ public class Setup extends Command {
         Language language = data.getGuild().getLanguage();
         Member member = data.getInteractionEvent().getMember();
 
-        // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
 
-        // Create a paginator and insert the pages.
         InteractivePaginator paginator = new InteractivePaginator();
         for (int page = 0; language.getValue("setup.page." + page + ".title") != null; page++) {
             output.setTitle(language.getValue("setup.page." + page + ".title"));

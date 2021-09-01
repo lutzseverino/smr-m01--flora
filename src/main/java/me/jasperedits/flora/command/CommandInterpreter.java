@@ -20,7 +20,7 @@ public class CommandInterpreter extends ListenerAdapter {
     public void onMessageReceived(MessageReceivedEvent event) {
         Guild guild = GuildDAO.getGuild(event.getGuild().getId());
 
-        if (event.getMessage().getAuthor().isBot() || !event.getMessage().getContentRaw().startsWith(guild.getPrefix()))
+        if (event.getMessage().getAuthor().isBot() || event.isWebhookMessage() || !event.getMessage().getContentRaw().startsWith(guild.getPrefix()))
             return;
 
         String[] path = event.getMessage().getContentRaw().split(" ");

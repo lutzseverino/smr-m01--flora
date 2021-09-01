@@ -25,29 +25,23 @@ public class Permissions implements Rule {
     }
 
     public void legacyOutput(ExecutionData information) {
-        // Get guild's language.
         Language language = information.getGuild().getLanguage();
 
-        // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getLegacyEvent().getAuthor()).getEmbedBuilder();
         output.setTitle(language.getValue("error.permission.title"));
         output.setDescription(language.getValue("error.permission.description"));
 
-        // Send the error message.
         information.getLegacyEvent().getMessage().reply(output.build()).mentionRepliedUser(false).queue();
     }
 
     @Override
     public void interactionOutput(ExecutionData data) {
-        // Get guild's language.
         Language language = data.getGuild().getLanguage();
 
-        // Build the output embed.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, data.getInteractionEvent().getUser()).getEmbedBuilder();
         output.setTitle(language.getValue("error.permission.title"));
         output.setDescription(language.getValue("error.permission.description"));
 
-        // Send the error message.
         data.getInteractionEvent().replyEmbeds(output.build()).addActionRow(DiscordUtil.addWikiComponent(language))
                 .setEphemeral(true).queue();
     }

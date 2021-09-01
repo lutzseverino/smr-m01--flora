@@ -20,10 +20,6 @@ public class Guild extends SimpleDocument {
 
     private Language language = new Language("en");
 
-    /*
-     *  If a Discord guild sent 1,000,000,000 messages per second,
-     *  it would take roughly 292 years to reach the long primitive limit.
-     */
     private long messageCount;
 
     private long seedCount;

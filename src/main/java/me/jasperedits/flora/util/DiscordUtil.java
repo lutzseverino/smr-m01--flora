@@ -23,13 +23,13 @@ public class DiscordUtil {
         output.setTitle(language.getValue("error.expire.title"));
         output.setDescription(language.getValue("error.expire.description"));
         event.deferEdit().setEmbeds(output.build()).setActionRow(
-                Button.secondary("expireHelp", language.getValue("commons.what"))
-                        .withEmoji(Emoji.fromMarkdown("<:flora_help:854516649206218762>")),
-                addWikiComponent(language))
+                        Button.secondary("expireHelp", language.getValue("commons.what"))
+                                .withEmoji(Emoji.fromMarkdown("<:flora_help:854516649206218762>")),
+                        addWikiComponent(language))
                 .queue();
     }
 
-    public void throwUnknownCommand(SlashCommandEvent event)  throws ExecutionException  {
+    public void throwUnknownCommand(SlashCommandEvent event) throws ExecutionException {
         Language language = GuildDAO.getGuild(event.getGuild().getId()).getLanguage();
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, event.getMember().getUser()).getEmbedBuilder();
 

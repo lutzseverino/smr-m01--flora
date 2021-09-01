@@ -6,8 +6,8 @@ import lombok.experimental.UtilityClass;
 import me.jasperedits.flora.command.annotation.ButtonAction;
 import me.jasperedits.flora.command.annotation.CommandNames;
 import me.jasperedits.flora.command.annotation.CommandType;
+import me.jasperedits.flora.command.annotation.CommandType.Format;
 import me.jasperedits.flora.command.impl.interactive.*;
-import me.jasperedits.flora.command.impl.interactive.start.Start;
 import me.jasperedits.flora.command.impl.legacy.CalculateCurrentGuildObjective;
 import me.jasperedits.flora.command.impl.legacy.UpdateGuildCommands;
 
@@ -59,11 +59,11 @@ public class CommandRegistry {
     }
 
     /**
-     * @param format the command format to fetch.
-     * @param name   a command name.
-     * @return a Command that matches said name and format.
+     * @param format the command {@link Format} to fetch
+     * @param name   a command name
+     * @return a {@link Command} that matches the provided name and {@link Format}
      */
-    public Command byName(CommandType.Format format, String name) {
+    public Command byName(Format format, String name) {
         Map<String, Command> commandMap;
 
         switch (format) {
@@ -76,8 +76,8 @@ public class CommandRegistry {
     }
 
     /**
-     * @param format the command format to fetch.
-     * @return a Command Collection of said format.
+     * @param format the command format to fetch
+     * @return a {@link Collection} of {@link Command} that have in common their {@link Format}
      */
     public Collection<Command> getAllCommands(CommandType.Format format) {
         Collection<Command> classes = Sets.newHashSet();
@@ -98,8 +98,8 @@ public class CommandRegistry {
     }
 
     /**
-     * @param command the command object you want to grab a ButtonAction from.
-     * @return a Method that handles a ButtonAction.
+     * @param command the {@link Command} you want to grab a {@link ButtonAction} from
+     * @return a {@link Method} that handles a {@link ButtonAction}
      */
     public Method getButtonAction(Command command) {
         return buttonActions.get(command);

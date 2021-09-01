@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/*
- * Credits: https://github.com/Almighty-Alpaca/JDA-Butler/
- *
- * Idea + Some code.
+/**
+ * The idea and some portions of this code was taken from https://github.com/Almighty-Alpaca/JDA-Butler/
  */
 public class InteractivePaginator {
 
