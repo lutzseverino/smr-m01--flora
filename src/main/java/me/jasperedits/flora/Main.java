@@ -17,7 +17,7 @@ public class Main {
             FloraBot floraBot = new FloraBot();
             floraBot.init();
         } catch (IOException | LoginException e) {
-            LogUtils.log(LogPriority.ERROR, "Couldn't initialize Flora:");
+            LogUtils.log("Main", "Couldn't initialize Flora:", LogPriority.ERROR);
             e.printStackTrace();
         }
     }

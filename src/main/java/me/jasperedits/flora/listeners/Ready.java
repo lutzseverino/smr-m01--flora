@@ -9,6 +9,6 @@ public class Ready extends ListenerAdapter {
 
     @Override
     public void onReady(ReadyEvent event) {
-        LogUtils.log(LogPriority.INFO, event.getJDA().getSelfUser().getAsTag() + " is ready.");
+        LogUtils.log("Ready", event.getJDA().getSelfUser().getAsTag() + " is ready.", LogPriority.INFO);
     }
 }
