@@ -30,7 +30,7 @@ public class CommandMethodFinder {
             methodSubcommand = firstCommand.getSubcommandMap().get(step);
 
             if (methodSubcommand != null) {
-                finalObject = methodSubcommand.getChild();
+                finalObject = methodSubcommand.getParent();
                 return methodSubcommand.getMethod();
             }
 

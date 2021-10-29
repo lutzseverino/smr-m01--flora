@@ -18,16 +18,21 @@ public class ClickableService extends ListenerAdapter {
         Clickable clickable = ClickableRegistry.byName(event.getComponentId());
         ExecutionData data = AnswerClassifierCache.get(event.getMessage().getIdLong());
 
-        if (clickable == null) if (data == null) {
-            DiscordUtil.throwExpiration(event);
-        } else {
-            Command buttonCommand = CommandRegistry.byName(CommandType.Format.INTERACTIVE, data.getInteractionEvent().getName());
-            CommandRegistry.getButtonAction(buttonCommand).invoke(buttonCommand, event, data);
+        if (event.getComponentId().contains("expirable")) {
+            if (data == null) {
+                DiscordUtil.throwExpiration(event);
+            } else {
+                Command buttonCommand = CommandRegistry.byName(CommandType.Format.INTERACTIVE, data.getInteractionEvent().getName());
+                CommandRegistry.getButtonAction(buttonCommand).invoke(buttonCommand, event, data);
+            }
         }
-        else if (clickable.getClass().getAnnotation(ClickableType.class).isPrivate() && data != null) {
-            clickable.execute(new ClickableInformation(event, data));
-        } else {
-            clickable.execute(new ClickableInformation(event));
+
+        if (clickable != null) {
+            if (clickable.getClass().getAnnotation(ClickableType.class).isPrivate() && data != null) {
+                clickable.execute(new ClickableInformation(event, data));
+            } else {
+                clickable.execute(new ClickableInformation(event));
+            }
         }
     }
 }

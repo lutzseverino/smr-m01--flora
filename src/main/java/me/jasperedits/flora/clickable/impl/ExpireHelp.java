@@ -18,7 +18,6 @@ public class ExpireHelp implements Clickable {
     public void execute(ClickableInformation information) {
         Language language = GuildDAO.getGuild(information.getButtonEvent().getGuild().getId()).getLanguage();
 
-        // Create the embed used for output.
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, information.getButtonEvent().getMember().getUser()).getEmbedBuilder();
 
         output.setTitle(language.getValue("error.expire-help.title"));

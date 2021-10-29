@@ -1,7 +1,8 @@
 values:
   commons.what: "¿Qué es esto?"
   commons.wiki: "Visita la wiki"
-  commons.wiki-link: "https://github.com/JasperEdits/Flora/wiki/Inicio"
+  commons.wiki-link: "https://github.com/Frequential/Flora/wiki/Inicio"
+  commons.refresh: "Recargar valores"
 
   # Errors
   error.permission.title: "**__Acción no autorizada__**"
@@ -30,6 +31,16 @@ values:
   # Settings
   settings.uploaded.title: "**__Configuración actualizada__**"
   settings.uploading.description: "Contactando con la base de datos..."
+
+  # Command: Start messages
+  start.sent.messages.title: "**__¡Una meta comunitaria está en curso! __**"
+  start.sent.messages.description: "Interactúa con otros para ayudar a completar esta meta.\n\n\n\n**%s** mensajes de %d enviados..."
+  start.sent.messages.prize-field: "Premio"
+  start.successful.messages.title: "**__Objetivo iniciado__**"
+  start.successful.messages.description: "Los mensajes ahora se están contando, una vez que se complete la meta, se generará uno nuevo automáticamente. "
+  start.null-channel.messages.title: "**__No hay canal para objetivos__**"
+  start.null-channel.messages.description: "Parece que no has configurado el canal de objetivos o fue eliminado.\n\nConfigúralo usando `/config objectivechannel <channel>`, aprende más con `/setup`."
+
 
   # Command: Setup
   setup.pages: "Número de página: %s"

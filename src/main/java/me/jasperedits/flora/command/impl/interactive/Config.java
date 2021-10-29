@@ -54,7 +54,7 @@ public class Config extends Command {
     }
 
     @Subcommand
-    public void messageChannel(ExecutionData data) {
+    public void objectiveChannel(ExecutionData data) {
         Language language = data.getGuild().getLanguage();
         Member member  = data.getInteractionEvent().getMember();
         EmbedBuilder output = new EmbedTemplate(EmbedFormat.DEFAULT, member.getUser()).getEmbedBuilder();
@@ -67,7 +67,7 @@ public class Config extends Command {
         GuildChannel newChannel = data.getInteractionEvent().getOption("channel").getAsGuildChannel();
 
         data.getInteractionEvent().deferReply().queue();
-        data.getGuild().setSeedObjectiveChannel(newChannel.getIdLong());
+        data.getGuild().setObjectiveChannel(newChannel.getIdLong());
         GuildDAO.updateGuild(data.getGuild());
 
         output.setDescription(language.getValue("config.channel.uploaded.description").replace("%s", newChannel.getAsMention()));

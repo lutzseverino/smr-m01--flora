@@ -2,6 +2,7 @@ values:
   commons.what: "What's this?"
   commons.wiki: "Visit the wiki"
   commons.wiki-link: "https://github.com/Frequential/Flora/wiki/"
+  commons.refresh: "Refresh values"
 
   # Errors
   error.permission.title: "**__Unauthorized action__**"
@@ -30,6 +31,15 @@ values:
   # Settings
   settings.uploaded.title: "**__Setting updated__**"
   settings.uploading.description: "Contacting database..."
+
+  # Command: Start messages
+  start.sent.messages.title: "**__A community goal is ongoing!__**"
+  start.sent.messages.description: "Interact with others to help complete this goal.\n\n**%s** of %d messages sent..."
+  start.sent.messages.prize-field: "Prize"
+  start.successful.messages.title: "**__Objective started__**"
+  start.successful.messages.description: "Messages are now being counted, once the objective is completed, a new one will be automatically generated."
+  start.null-channel.messages.title: "**__There's no objective channel__**"
+  start.null-channel.messages.description: "It appears you haven't configured the objective channel or it has been deleted.\n\nSet it up using `/config objectivechannel <channel>`, learn more via `/setup`."
 
   # Command: Setup
   setup.pages: "Page number: %s"

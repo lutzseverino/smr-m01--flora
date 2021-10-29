@@ -19,7 +19,7 @@ public @interface CommandType {
 
     int minArguments() default 0;
 
-    int maxArguments() default 0;
+        int maxArguments() default 0;
 
     enum Format {
         INTERACTIVE,

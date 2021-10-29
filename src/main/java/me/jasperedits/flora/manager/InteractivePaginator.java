@@ -66,28 +66,28 @@ public class InteractivePaginator {
         String componentId = interaction.getComponentId();
 
         switch (componentId) {
-            case "next" -> {
+            case "next.expirable" -> {
                 interaction.deferEdit().setEmbeds(getNext().getEmbeds())
                         .setActionRows(getButtons())
                         .queue();
             }
-            case "previous" -> interaction.deferEdit().setEmbeds(getPrev().getEmbeds())
+            case "previous.expirable" -> interaction.deferEdit().setEmbeds(getPrev().getEmbeds())
                     .setActionRows(getButtons())
                     .queue();
-            case "delete" -> interaction.getMessage().delete().queue();
+            case "delete.expirable" -> interaction.getMessage().delete().queue();
         }
     }
 
     private Button getPrevButton() {
-        return Button.secondary("previous", Emoji.fromMarkdown("<:flora_previous:854084823371350086>"));
+        return Button.secondary("previous.expirable", Emoji.fromMarkdown("<:flora_previous:854084823371350086>"));
     }
 
     private Button getNextButton() {
-        return Button.secondary("next", Emoji.fromMarkdown("<:flora_next:854084370058051595>"));
+        return Button.secondary("next.expirable", Emoji.fromMarkdown("<:flora_next:854084370058051595>"));
     }
 
     private Button getDeleteButton() {
-        return Button.danger("delete", Emoji.fromMarkdown("<:flora_delete:854093133359874048>"));
+        return Button.danger("delete.expirable", Emoji.fromMarkdown("<:flora_delete:854093133359874048>"));
     }
 
     public ActionRow getButtons() {

@@ -26,7 +26,7 @@ public class UpdateGuildCommands extends Command {
                                 .addOption(OptionType.STRING, "prefix", "a new prefix", true),
                         new CommandData("privacy", "A small privacy notice."),
                         new CommandData("config", "Sets Flora up.")
-                                .addSubcommands(new SubcommandData("messagechannel", "Change this guild's message objective channel.")
+                                .addSubcommands(new SubcommandData("objectivechannel", "Change this guild's message objective channel.")
                                         .addOption(OptionType.CHANNEL, "channel", "The text channel where Flora will send the message objective.", true))
                                 .addSubcommands(new SubcommandData("language", "Change the language of this guild or get a list of available languages.")
                                         .addOption(OptionType.STRING, "code", "A valid language code.")),
@@ -34,7 +34,8 @@ public class UpdateGuildCommands extends Command {
                         new CommandData("ping", "Ping Flora."),
                         new CommandData("start", "Start community goals.")
                                 .addSubcommandGroups(new SubcommandGroupData("messages", "Start message community goals.")
-                                                .addSubcommands(new SubcommandData("goal", "A simple and automatic message goal.")),
+                                                .addSubcommands(new SubcommandData("goal", "A simple and automatic message goal.")
+                                                        .addOption(OptionType.STRING, "prize", "Add a prize to incentivise your users.")),
                                         new SubcommandGroupData("user", "Start user community goals.")
                                                 .addSubcommands(new SubcommandData("goal", "A simple and automatic user goal."))))
                 .queue();
