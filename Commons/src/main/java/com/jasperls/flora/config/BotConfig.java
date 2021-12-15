@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class BotConfig {
     private String token;
+    private String status;
+    private String activity;
 
     public BotConfig() {
     }
