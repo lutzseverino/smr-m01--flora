@@ -26,7 +26,7 @@ public class Snakelet {
         try {
             inputStream = new FileInputStream(path);
         } catch (FileNotFoundException e) {
-            Log.error(this.getClass(), "Can't read file: " + path + " doesn't exist");
+            Log.error(this.getClass(), "Can't read file: \"" + path + "\" doesn't exist");
         }
 
         return yaml.load(inputStream);
@@ -43,7 +43,7 @@ public class Snakelet {
         try {
             writer = new FileWriter(path);
         } catch (IOException e) {
-            Log.error(this.getClass(), "Can't write file: " + path);
+            Log.error(this.getClass(), "Can't write file: \"" + path + "\"");
         }
 
         yaml.dump(object, writer);

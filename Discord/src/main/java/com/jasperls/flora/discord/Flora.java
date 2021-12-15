@@ -10,9 +10,6 @@ import javax.security.auth.login.LoginException;
 
 public class Flora {
 
-    public Flora() {
-    }
-
     public void init(String config) {
         Snakelet configYaml = new Snakelet(config);
         Values values = configYaml.read(Values.class);
