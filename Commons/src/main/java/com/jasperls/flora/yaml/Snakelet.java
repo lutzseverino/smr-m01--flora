@@ -7,10 +7,10 @@ import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.*;
 
-public class YamlSimplifier {
+public class Snakelet {
     String path;
 
-    public YamlSimplifier(String path) {
+    public Snakelet(String path) {
         this.path = path;
     }
 
