@@ -13,6 +13,11 @@ public class YamlSimplifier {
         this.path = path;
     }
 
+    /**
+     * @param clazz the class of the instance to be read
+     * @param <T> the object the file is representing
+     * @return parsed object
+     */
     public <T> T read(Class<T> clazz) {
         Yaml yaml = new Yaml(new Constructor(clazz));
 
@@ -26,6 +31,9 @@ public class YamlSimplifier {
         return yaml.load(inputStream);
     }
 
+    /**
+     * @param object the object to be written
+     */
     public void write(Object object) {
         DumperOptions options = getDumperOptions();
         Yaml yaml = new Yaml(options);
