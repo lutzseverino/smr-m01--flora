@@ -5,6 +5,12 @@ public class Main {
         String configPath = args[0];
 
         Flora flora = new Flora();
-        flora.init(configPath);
+
+        try {
+            flora.init(configPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // TODO log init failure
+        }
     }
 }
