@@ -1,5 +1,7 @@
 package com.jasperls.flora.discord;
 
+import com.jasperls.flora.logger.Log;
+
 public class Main {
     public static void main(String[] args) {
         String configPath = args[0];
@@ -9,8 +11,7 @@ public class Main {
         try {
             flora.init(configPath);
         } catch (Exception e) {
-            e.printStackTrace();
-            // TODO log init failure
+            Log.error(Main.class, "Couldn't initialize Flora Discord");
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.jasperls.flora.yaml;
 
+import com.jasperls.flora.logger.Log;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -25,7 +26,7 @@ public class YamlSimplifier {
         try {
             inputStream = new FileInputStream(path);
         } catch (FileNotFoundException e) {
-            // TODO log file not found
+            Log.error(this.getClass(), "Can't read file: " + path + " doesn't exist");
         }
 
         return yaml.load(inputStream);
@@ -42,7 +43,7 @@ public class YamlSimplifier {
         try {
             writer = new FileWriter(path);
         } catch (IOException e) {
-            // TODO log unable to create file
+            Log.error(this.getClass(), "Can't write file: " + path);
         }
 
         yaml.dump(object, writer);

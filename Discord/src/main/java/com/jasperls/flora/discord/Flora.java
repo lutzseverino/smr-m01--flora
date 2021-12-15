@@ -1,6 +1,7 @@
 package com.jasperls.flora.discord;
 
 import com.jasperls.flora.config.Values;
+import com.jasperls.flora.logger.Log;
 import com.jasperls.flora.yaml.YamlSimplifier;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
@@ -17,20 +18,21 @@ public class Flora {
         Values values = configYaml.read(Values.class);
 
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(values.getBotConfig().getToken());
-
         builder.setBulkDeleteSplittingEnabled(false);
 
+        String status = values.getBotConfig().getStatus();
+
         switch (values.getBotConfig().getActivity()) {
-            case "competing" -> builder.setActivity(Activity.competing(values.getBotConfig().getStatus()));
-            case "listening" -> builder.setActivity(Activity.listening(values.getBotConfig().getStatus()));
-            case "playing" -> builder.setActivity(Activity.playing(values.getBotConfig().getStatus()));
-            default -> builder.setActivity(Activity.watching(values.getBotConfig().getStatus()));
+            case "competing" -> builder.setActivity(Activity.competing(status));
+            case "listening" -> builder.setActivity(Activity.listening(status));
+            case "playing" -> builder.setActivity(Activity.playing(status));
+            default -> builder.setActivity(Activity.watching(status));
         }
 
         try {
-            builder.build().getShards().stream().findFirst().get();
+            builder.build();
         } catch (LoginException e) {
-            e.printStackTrace();
+            Log.error(Main.class, "JDA couldn't login to provided application");
         }
     }
 }
