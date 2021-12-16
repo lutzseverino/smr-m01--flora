@@ -1,6 +1,7 @@
-package com.jasperls.flora.database;
+package com.jasperls.flora.database.mongodb;
 
-import com.jasperls.flora.database.mongodb.MongoCollection;
+import com.jasperls.flora.database.DatabaseCollection;
+import com.jasperls.flora.database.DatabaseManager;
 import com.jasperls.flora.docs.Model;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;

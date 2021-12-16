@@ -1,8 +1,6 @@
 package com.jasperls.flora.discord;
 
-import com.jasperls.flora.config.DatabaseConfig;
 import com.jasperls.flora.config.Values;
-import com.jasperls.flora.database.MongoDatabaseManager;
 import com.jasperls.flora.logger.Log;
 import com.jasperls.flora.yaml.Snakelet;
 import net.dv8tion.jda.api.entities.Activity;
@@ -20,16 +18,6 @@ public class Flora {
         builder.setBulkDeleteSplittingEnabled(false);
 
         String status = values.getBotConfig().getStatus();
-
-        DatabaseConfig databaseConfig = values.getDbConfig();
-
-        new MongoDatabaseManager(
-                databaseConfig.getHost(),
-                databaseConfig.getPort(),
-                databaseConfig.getUser(),
-                databaseConfig.getPasswd(),
-                databaseConfig.getName()
-        );
 
         switch (values.getBotConfig().getActivity()) {
             case "competing" -> builder.setActivity(Activity.competing(status));
