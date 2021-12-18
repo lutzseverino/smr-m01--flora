@@ -1,11 +1,11 @@
 !!config.Values
 botConfig:
   token: token
-  status: "your community grow"
   activity: watching
-dbConfig:
-  dbHost: localhost
-  dbName: name
-  dbPasswd: passwd
-  dbPort: 27017
-  dbUser: user
+  status: "your community grow"
+databaseConfig:
+  host: localhost
+  name: name
+  passwd: passwd
+  port: 27017
+  user: user
