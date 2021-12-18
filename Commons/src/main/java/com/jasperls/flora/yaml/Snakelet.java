@@ -7,16 +7,11 @@ import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.*;
 
-public class Snakelet {
-    String path;
-
-    public Snakelet(String path) {
-        this.path = path;
-    }
+public record Snakelet(String path) {
 
     /**
      * @param clazz the class of the instance to be read
-     * @param <T> the object the file is representing
+     * @param <T>   the object the file is representing
      * @return parsed object
      */
     public <T> T read(Class<T> clazz) {
