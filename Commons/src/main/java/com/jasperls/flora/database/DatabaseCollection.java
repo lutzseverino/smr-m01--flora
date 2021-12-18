@@ -2,10 +2,12 @@ package com.jasperls.flora.database;
 
 import com.jasperls.flora.docs.Model;
 
-public interface DatabaseCollection<T extends Model> {
-    T get(String id);
+import java.util.Optional;
 
-    T update(T document);
+public interface DatabaseCollection<T extends Model> {
+    Optional<T> get(String id);
+
+    void update(T document);
 
     void delete(String id);
 }

@@ -4,6 +4,8 @@ import com.jasperls.flora.database.DatabaseCollection;
 import com.jasperls.flora.docs.Model;
 import org.mongojack.JacksonMongoCollection;
 
+import java.util.Optional;
+
 public class MongoCollection<T extends Model> implements DatabaseCollection<T> {
 
     private JacksonMongoCollection<T> connection;
@@ -13,14 +15,13 @@ public class MongoCollection<T extends Model> implements DatabaseCollection<T> {
     }
 
     @Override
-    public T get(String id) {
-        return this.connection.findOneById(id);
+    public Optional<T> get(String id) {
+        return Optional.ofNullable(this.connection.findOneById(id));
     }
 
     @Override
-    public T update(T document) {
+    public void update(T document) {
         this.connection.save(document);
-        return document;
     }
 
     @Override
