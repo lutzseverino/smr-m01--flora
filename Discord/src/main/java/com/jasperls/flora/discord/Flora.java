@@ -1,25 +1,27 @@
 package com.jasperls.flora.discord;
 
-import com.jasperls.flora.config.Values;
+import com.jasperls.flora.config.BotConfig;
 import com.jasperls.flora.logger.Log;
-import com.jasperls.flora.yaml.Snakelet;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.security.auth.login.LoginException;
 
+@Singleton
 public class Flora {
 
-    public void init(String config) {
-        Snakelet configYaml = new Snakelet(config);
-        Values values = configYaml.read(Values.class);
+    @Inject
+    private BotConfig config;
 
-        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(values.getBotConfig().getToken());
+    public void init() {
+        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(config.getToken());
         builder.setBulkDeleteSplittingEnabled(false);
 
-        String status = values.getBotConfig().getStatus();
+        String status = config.getStatus();
 
-        switch (values.getBotConfig().getActivity()) {
+        switch (config.getActivity()) {
             case "competing" -> builder.setActivity(Activity.competing(status));
             case "listening" -> builder.setActivity(Activity.listening(status));
             case "playing" -> builder.setActivity(Activity.playing(status));

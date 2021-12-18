@@ -1,6 +1,11 @@
 package com.jasperls.flora.discord;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.jasperls.flora.CommonsModule;
+import com.jasperls.flora.config.Values;
 import com.jasperls.flora.logger.Log;
+import com.jasperls.flora.yaml.Snakelet;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,10 +18,13 @@ public class Main {
             configPath = "./values.yaml";
         }
 
-        Flora flora = new Flora();
+        Snakelet config = new Snakelet(configPath);
+
+        Injector injector = Guice.createInjector(new CommonsModule(config.read(Values.class)));
+        Flora flora = injector.getInstance(Flora.class);
 
         try {
-            flora.init(configPath);
+            flora.init();
         } catch (Exception e) {
             Log.error(Main.class, "Couldn't initialize Flora Discord");
         }
