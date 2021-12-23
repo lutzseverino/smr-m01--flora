@@ -7,8 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Commons" />
+        <module name="flora-discord" />
         <module name="Discord" />
+        <module name="Commons" />
+        <module name="flora-commons" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
