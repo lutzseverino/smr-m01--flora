@@ -65,6 +65,11 @@
             <artifactId>logback-classic</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jasperls.rimor</groupId>
+            <artifactId>rimor-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

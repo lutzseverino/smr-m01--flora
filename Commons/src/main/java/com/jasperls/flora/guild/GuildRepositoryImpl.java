@@ -30,6 +30,10 @@ public class GuildRepositoryImpl implements GuildRepository {
         this.guildCollection = databaseManager.getCollection(Guild.class);
     }
 
+    public void update(Guild guild) {
+        this.guildCollection.update(guild);
+    }
+
     @Override
     public Guild get(String id) {
         try {

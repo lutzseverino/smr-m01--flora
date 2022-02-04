@@ -5,5 +5,13 @@ import org.mongojack.Id;
 
 public abstract class SimpleDocument implements Model {
     @Id
-    @Getter private String id;
+    @Getter
+    private String id;
+
+    public SimpleDocument() {
+    }
+
+    public SimpleDocument(String id) {
+        this.id = id;
+    }
 }

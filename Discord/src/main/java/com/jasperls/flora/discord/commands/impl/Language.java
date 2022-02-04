@@ -1,7 +1,7 @@
 package com.jasperls.flora.discord.commands.impl;
 
 import com.jasperls.flora.discord.commands.CommandInfo;
-import com.jasperls.flora.discord.design.Colors;
+import com.jasperls.flora.discord.design.Palette;
 import com.jasperls.flora.discord.design.embed.EmbedTemplate;
 import com.jasperls.flora.docs.impl.Guild;
 import com.jasperls.flora.guild.GuildRepositoryImpl;
@@ -28,7 +28,7 @@ public class Language extends OptionSubcommand {
         String[] newLanguage = this.code.split("_");
 
         Locale newLocale = new Locale(newLanguage[0], newLanguage[1]);
-        EmbedBuilder out = new EmbedTemplate(Colors.SUCCESS).getBuilder();
+        EmbedBuilder out = new EmbedTemplate(Palette.SUCCESS).getBuilder();
 
         info.getEvent().deferReply().queue(response -> {
             info.getGuild().setLanguage(newLocale);

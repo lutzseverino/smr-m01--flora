@@ -19,14 +19,18 @@ public class Main {
         }
 
         Snakelet config = new Snakelet(configPath);
+        Injector injector = Guice.createInjector(
+                new DiscordModule(),
+                new CommonsModule(config.read(Values.class))
+        );
 
-        Injector injector = Guice.createInjector(new CommonsModule(config.read(Values.class)));
         Flora flora = injector.getInstance(Flora.class);
 
         try {
             flora.init();
         } catch (Exception e) {
-            Log.error(Main.class, "Couldn't initialize Flora Discord");
+            Log.error(Main.class, "The Discord app threw an exception in the initialization phase");
+            e.printStackTrace();
         }
     }
 }

@@ -22,7 +22,7 @@
     <repositories>
         <repository>
             <id>oss.sonatype.org-snapshot</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -31,85 +31,74 @@
             <id>repo.spring.io-milestone</id>
             <url>https://repo.spring.io/milestone</url>
         </repository>
-        <repository>
-            <id>dv8tion</id>
-            <name>m2-dv8tion</name>
-            <url>https://m2.dv8tion.net/releases</url>
-        </repository>
     </repositories>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Java Discord API A.K.A. JDA -->
-
             <dependency>
                 <groupId>net.dv8tion</groupId>
                 <artifactId>JDA</artifactId>
-                <version>4.3.0_324</version>
+                <version>5.0.0-alpha.3</version>
             </dependency>
-
             <!-- Jackson -->
-
-            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>2.13.0</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
             <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-yaml</artifactId>
                 <version>2.13.0</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>2.13.0</version>
             </dependency>
-
+            <!-- /Jackson -->
             <!-- MongoDB -->
-
-            <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
             <dependency>
                 <groupId>org.mongodb</groupId>
                 <artifactId>mongodb-driver-sync</artifactId>
                 <version>4.4.0</version>
             </dependency>
-
             <dependency>
                 <groupId>org.mongojack</groupId>
                 <artifactId>mongojack</artifactId>
                 <version>4.3.0</version>
             </dependency>
-
+            <!-- /MongoDB -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>31.0.1-jre</version>
             </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.22</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>1.2.7</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
             <dependency>
                 <groupId>com.google.inject</groupId>
                 <artifactId>guice</artifactId>
                 <version>5.0.1</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.jasperls.rimor</groupId>
+                <artifactId>rimor-core</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jasperls.rimor</groupId>
+                <artifactId>rimor-jda</artifactId>
+                <version>2.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

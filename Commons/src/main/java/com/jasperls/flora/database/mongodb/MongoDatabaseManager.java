@@ -25,7 +25,7 @@ public class MongoDatabaseManager implements DatabaseManager {
     public MongoDatabaseManager(DatabaseConfig databaseConfig) {
         String authenticationString = String.format(
                 "mongodb://%s:%s@%s:%d/?readPreference=primary&ssl=false",
-                databaseConfig.getName(),
+                databaseConfig.getUser(),
                 databaseConfig.getPasswd(),
                 databaseConfig.getHost(),
                 databaseConfig.getPort());

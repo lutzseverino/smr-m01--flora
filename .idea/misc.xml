@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EasyI18nSettings">
+    <option name="localesPath" value="$PROJECT_DIR$/Commons/src/main/resources/language" />
+    <option name="previewLocale" value="bundle" />
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -17,5 +21,8 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="openjdk-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="PropertiesSeparatorManager">
+    <file url="file://$PROJECT_DIR$/Commons/src/main/resources/language/bundle" separator="\u005f" />
   </component>
 </project>

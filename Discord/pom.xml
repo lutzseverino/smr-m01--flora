@@ -21,6 +21,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.jasperls.rimor</groupId>
+            <artifactId>rimor-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jasperls.rimor</groupId>
+            <artifactId>rimor-jda</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>com.jasperls.flora</groupId>
             <artifactId>flora-commons</artifactId>
             <version>1.0</version>
