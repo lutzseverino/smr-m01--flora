@@ -8,6 +8,7 @@ import com.jasperls.flora.logger.Log;
 import com.jasperls.flora.yaml.Snakelet;
 
 public class Main {
+
     public static void main(String[] args) {
         String configPath;
 

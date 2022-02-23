@@ -6,6 +6,7 @@ import java.awt.*;
 
 @Getter
 public enum Palette {
+
     SUCCESS(new Color(0x57F287)),
     WARNING(new Color(0x5865F2)),
     ERROR(new Color(0xED4245)),

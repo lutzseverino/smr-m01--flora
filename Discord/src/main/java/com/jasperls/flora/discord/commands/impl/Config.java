@@ -6,8 +6,7 @@ import javax.inject.Inject;
 
 public class Config extends JDACommand {
 
-    @Inject
-    public Config(Language language) {
+    @Inject public Config(Language language) {
         super();
         addOptionSubcommand(language);
     }

@@ -6,5 +6,6 @@ import com.jasperls.flora.docs.Model;
 
 @ImplementedBy(MongoDatabaseManager.class)
 public interface DatabaseManager {
+
     <T extends Model> DatabaseCollection<T> getCollection(Class<T> type);
 }

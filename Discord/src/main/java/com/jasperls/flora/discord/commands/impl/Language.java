@@ -17,9 +17,8 @@ import javax.inject.Inject;
 import java.util.Locale;
 
 public class Language extends OptionSubcommand {
-    @Inject
-    private GuildRepositoryImpl guildRepository;
 
+    @Inject private GuildRepositoryImpl guildRepository;
     private String code;
 
     @MethodCommand

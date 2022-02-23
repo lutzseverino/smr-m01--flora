@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 
 public class Update extends JDACommand {
+
     @MethodCommand
     public void run(CommandInfo info) {
         info.getEvent().getGuild().updateCommands().addCommands(

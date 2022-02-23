@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Values {
+
     private BotConfig botConfig;
     private DatabaseConfig databaseConfig;
 

@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class CommandInfo extends JDAExecutionData {
+
     private final Guild guild;
 
     public CommandInfo(Guild guild) {

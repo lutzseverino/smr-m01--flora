@@ -25,8 +25,7 @@ public class GuildRepositoryImpl implements GuildRepository {
                         }
                     });
 
-    @Inject
-    public GuildRepositoryImpl(DatabaseManager databaseManager) {
+    @Inject public GuildRepositoryImpl(DatabaseManager databaseManager) {
         this.guildCollection = databaseManager.getCollection(Guild.class);
     }
 

@@ -12,10 +12,9 @@ import javax.inject.Inject;
 import java.util.Objects;
 
 public class CommandInterpreter extends ListenerAdapter {
-    @Inject
-    private JDAInterpreter coreInterpreter;
-    @Inject
-    private GuildRepositoryImpl guildRepository;
+
+    @Inject private JDAInterpreter coreInterpreter;
+    @Inject private GuildRepositoryImpl guildRepository;
 
     @SneakyThrows
     @Override

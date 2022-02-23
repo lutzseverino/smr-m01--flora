@@ -6,8 +6,8 @@ import java.io.File;
 import java.util.*;
 
 public class Dictionary {
-    @Getter
-    private final ResourceBundle bundle;
+
+    @Getter private final ResourceBundle bundle;
 
     public Dictionary(Locale language) {
         bundle = ResourceBundle.getBundle("language.bundle", language);

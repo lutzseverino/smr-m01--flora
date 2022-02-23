@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 
 @Getter
 public class EmbedTemplate {
+
     private final EmbedBuilder builder;
 
     public EmbedTemplate(Palette color) {

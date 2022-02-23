@@ -9,6 +9,7 @@ import com.jasperls.flora.discord.commands.impl.Update;
 import com.jasperls.rimor.jda.type.JDACommand;
 
 public class DiscordModule extends AbstractModule {
+
     @Override
     protected void configure() {
         Multibinder<JDACommand> commands = Multibinder.newSetBinder(binder(), JDACommand.class);

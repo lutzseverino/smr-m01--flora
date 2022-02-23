@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DatabaseConfig {
+
     private String host;
     private int port;
     private String user;

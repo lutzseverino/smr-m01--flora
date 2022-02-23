@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 @UtilityClass
 public class Log {
+
     public void info(Class<?> clazz, String message) {
         log(clazz, message, LogPriority.INFO);
     }

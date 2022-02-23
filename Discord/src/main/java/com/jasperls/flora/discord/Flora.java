@@ -16,12 +16,10 @@ import java.util.Set;
 
 @Singleton
 public class Flora {
-    @Inject
-    private BotConfig config;
-    @Inject
-    private CommandInterpreter commandInterpreter;
-    @Inject
-    private Set<JDACommand> commands;
+
+    @Inject private BotConfig config;
+    @Inject private CommandInterpreter commandInterpreter;
+    @Inject private Set<JDACommand> commands;
 
     public void init() {
         ShardManager shardManager = null;
