@@ -1,7 +1,7 @@
 # Contributing to Flora
 ###### Right now, we don't have a Code of Conduct or issue/PR templates; Follow common sense when talking to the community and notifying them about problems.
 ## Want to contribute financially?
-First of all, thanks! You're the one that keeps this ship going, and the same goes for every open source project out there.
+First, thanks! You're the one that keeps this ship going, and the same goes for every open source project out there.
 - Become a [patreon](https://patreon.com/jasperls)
 - Buy me a [ko-fi](https://ko-fi.com/jasperls)
 ## Want to contribute with your knowledge?
